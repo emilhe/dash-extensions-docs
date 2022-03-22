@@ -1,4 +1,7 @@
+import importlib
 from itertools import chain
+
+import mistletoe
 from dash_extensions import Purify
 from dash_extensions.enrich import DashBlueprint, html
 from mistletoe import BaseRenderer
@@ -6,7 +9,11 @@ from mistletoe.block_token import HTMLBlock
 
 
 class DashHtmlRenderer(BaseRenderer):
-    def __init__(self, *extras):
+    """
+    Render markdown into Dash HTML components.
+    """
+
+    def __init__(self, *extras, custom_elements=None):
         super().__init__(*chain([HTMLBlock], extras))
         self._suppress_ptag_stack = [False]
         self.h_level_mapping = {
@@ -17,6 +24,7 @@ class DashHtmlRenderer(BaseRenderer):
             5: html.H5,
             6: html.H6
         }
+        self.custom_elements = custom_elements if custom_elements else {}
 
     def render_strong(self, token):
         return html.Strong(self.render_inner(token))
@@ -57,9 +65,25 @@ class DashHtmlRenderer(BaseRenderer):
 
     def render_quote(self, token):
         self._suppress_ptag_stack.append(False)
-        elements = [self.render(child) for child in token.children]
+        inner = [self.render(child) for child in token.children]
         self._suppress_ptag_stack.pop()
-        return html.Blockquote(elements)
+        # Check for custom elements.
+        custom_element = self.detect_custom_element(inner)
+        if custom_element:
+            return custom_element
+        # If not found, just return normal block.
+        return html.Blockquote(inner)
+
+    def detect_custom_element(self, inner):
+        # Check for special elements.
+        first_line = inner[0].children
+        element_type = first_line.split(":")[0]
+        if element_type in self.custom_elements:
+            # TODO: Add more elaborate parsing.
+            args = first_line.split(":")[1:]
+            kwargs = dict()
+            return self.custom_elements[element_type](self, *args, **kwargs)
+        return None
 
     def render_paragraph(self, token):
         if self._suppress_ptag_stack[-1]:
@@ -110,3 +134,9 @@ class DashHtmlRenderer(BaseRenderer):
         dp = DashBlueprint()
         dp.layout = self.render_inner(token)
         return dp
+
+
+class DashRendererX(BaseRenderer):
+
+    def __init__(self, *extras):
+        super().__init__(*chain([HTMLBlock], extras))

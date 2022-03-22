@@ -49,3 +49,7 @@ and text on another link
 <p>Hello from <em>html</em> world!</p>
 
 \* Without the backslash, this would be a bullet in an unordered list.
+
+> ApiDoc:dash_extensions.Purify
+
+    
