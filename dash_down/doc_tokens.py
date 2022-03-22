@@ -4,6 +4,8 @@ from dash_extensions.enrich import DashProxy, DashBlueprint, PrefixIdTransform
 
 from mistletoe import BaseRenderer
 from dash import html
+from mistletoe.block_token import BlockCode
+
 from dash_down.custom_token import CustomToken
 
 
@@ -28,6 +30,9 @@ class ApiDocToken(CustomToken):
 
 
 class DashProxyToken(CustomToken):
+    def __init__(self, show_code=True):
+        self.show_code = show_code
+
     def render(self, renderer: BaseRenderer, *parts):
         # Get the app.
         module_name = parts[0]
@@ -41,5 +46,15 @@ class DashProxyToken(CustomToken):
         # Register on blueprint.
         blueprint: DashBlueprint = renderer.blueprint
         app.blueprint.register_callbacks(blueprint)
-        # Return the layout.
-        return app._layout_value()
+        # Return the layout
+        layout = app._layout_value()
+        if not self.show_code:
+            return layout
+        # Show also the code.
+        with open(f"{module_name.replace('.', '/')}.py", 'r') as f:
+            token = BlockCode(f.readlines())
+            token.language = "python"
+        return html.Div([
+            renderer.render_block_code(token),
+            layout
+        ])
