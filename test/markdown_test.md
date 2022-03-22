@@ -52,4 +52,5 @@ and text on another link
 
 > ApiDoc:dash_extensions.Purify
 
+> DashProxy:test.example_app:app
     

@@ -21,6 +21,7 @@ class DashHtmlRenderer(BaseRenderer):
             5: html.H5,
             6: html.H6
         }
+        self.blueprint = None
 
     def render_strong(self, token):
         return html.Strong(self.render_inner(token))
@@ -111,6 +112,6 @@ class DashHtmlRenderer(BaseRenderer):
         return html.Div(inner)
 
     def render_document(self, token):
-        dp = DashBlueprint()
-        dp.layout = self.render_inner(token)
-        return dp
+        self.blueprint = DashBlueprint()
+        self.blueprint.layout = self.render_inner(token)
+        return self.blueprint

@@ -16,7 +16,7 @@ def bind_custom_tokens(renderer: T, custom_tokens: List[CustomToken]):
     # Create token mapping.
     custom_token_map = {}
     for t in custom_tokens:
-        custom_token_map[t.__class__.__name__] = t
+        custom_token_map[t.__class__.__name__.replace("Token", "")] = t
     # Prepare monkey patching.
     render_quote_original = renderer.render_map['Quote']
 

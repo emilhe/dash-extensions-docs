@@ -1,12 +1,13 @@
 import importlib
 import mistletoe
+from dash_extensions.enrich import DashProxy, DashBlueprint, PrefixIdTransform
 
 from mistletoe import BaseRenderer
 from dash import html
 from dash_down.custom_token import CustomToken
 
 
-class ApiDoc(CustomToken):
+class ApiDocToken(CustomToken):
     def render(self, renderer: BaseRenderer, inner: str):
         # Parse api doc.
         module_name, component_name = ".".join(inner.split(".")[:-1]), inner.split(".")[-1]
@@ -24,3 +25,21 @@ class ApiDoc(CustomToken):
             renderer.render_heading(heading_token),
             renderer.render_block_code(code_token)
         ])
+
+
+class DashProxyToken(CustomToken):
+    def render(self, renderer: BaseRenderer, *parts):
+        # Get the app.
+        module_name = parts[0]
+        app_name = parts[1] if len(parts) > 1 else "app"
+        module = importlib.import_module(module_name)
+        app: DashProxy = getattr(module, app_name)
+        # Add prefix.
+        prefix = module_name.replace(".", "_")
+        prefix_transform = PrefixIdTransform(prefix)  # TODO: Maybe do some escaping?
+        app.blueprint.transforms.append(prefix_transform)
+        # Register on blueprint.
+        blueprint: DashBlueprint = renderer.blueprint
+        app.blueprint.register_callbacks(blueprint)
+        # Return the layout.
+        return app._layout_value()
