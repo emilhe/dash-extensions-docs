@@ -1,11 +1,11 @@
-from mistletoe import Document
-from dash_down.custom_token import bind_custom_tokens
-from dash_down.doc_tokens import ApiDocToken
-from dash_down.html_renderer import DashHtmlRenderer
+from dash_down.express import render_markdown_html, render_markdown_dmc
 
 
-def test_dash_html_renderer():
-    with open('markdown_test.md', 'r') as f:
-        with DashHtmlRenderer() as r:
-            bind_custom_tokens(r, custom_tokens=[ApiDocToken()])
-            p = r.render(Document(f))
+def test_render_markdown_html():
+    blueprint = render_markdown_html('markdown_test.md')
+    # TODO: Maybe add UI validation, e.g. using Percy
+
+
+def test_render_markdown_dmc():
+    blueprint = render_markdown_dmc('markdown_test.md')
+    # TODO: Maybe add UI validation, e.g. using Percy

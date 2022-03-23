@@ -1,15 +1,22 @@
 import importlib
 import mistletoe
-from dash_extensions.enrich import DashProxy, DashBlueprint, PrefixIdTransform
 
+from dash_extensions.enrich import DashProxy, DashBlueprint, PrefixIdTransform
 from mistletoe import BaseRenderer
 from dash import html
 from mistletoe.block_token import BlockCode
+from dash_down.custom_block import CustomBlock
 
-from dash_down.custom_token import CustomToken
+""""
+This module holds examples of custom block defnitions. Use them as you please, either as-they-are or as inspiration.
+"""
 
 
-class ApiDocToken(CustomToken):
+class ApiDocBlock(CustomBlock):
+    """
+    Block used to automate api documentation generation.
+    """
+
     def render(self, renderer: BaseRenderer, inner: str):
         # Parse api doc.
         module_name, component_name = ".".join(inner.split(".")[:-1]), inner.split(".")[-1]
@@ -29,7 +36,11 @@ class ApiDocToken(CustomToken):
         ])
 
 
-class DashProxyToken(CustomToken):
+class DashProxyBlock(CustomBlock):
+    """
+    Block used to render Dash apps.
+    """
+
     def __init__(self, show_code=True):
         self.show_code = show_code
 
