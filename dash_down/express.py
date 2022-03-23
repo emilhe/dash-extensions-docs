@@ -15,9 +15,9 @@ def _render_markdown(renderer, md_path: str, custom_blocks=None) -> DashBlueprin
     return blueprint
 
 
-def render_markdown_html(md_path: str, custom_blocks=None) -> DashBlueprint:
+def md_to_blueprint_html(md_path: str, custom_blocks=None) -> DashBlueprint:
     return _render_markdown(DashHtmlRenderer, md_path, custom_blocks)
 
 
-def render_markdown_dmc(md_path: str, custom_blocks=None) -> DashBlueprint:
+def md_to_blueprint_dmc(md_path: str, custom_blocks=None) -> DashBlueprint:
     return _render_markdown(DashMantineRenderer, md_path, custom_blocks)
