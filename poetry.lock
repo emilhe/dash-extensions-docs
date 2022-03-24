@@ -90,6 +90,23 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "dash-down"
+version = "0.0.2"
+description = ""
+category = "main"
+optional = false
+python-versions = ">=3.9,<4.0"
+
+[package.dependencies]
+dash = "2.3.0"
+dash-extensions = "0.1.0rc2"
+dash-iconify = ">=0.1.0,<0.2.0"
+dash-labs = ">=1.0.3,<2.0.0"
+dash-mantine-components = ">=0.6.0,<0.7.0"
+mistletoe = ">=0.8.2,<0.9.0"
+mistune = ">=2.0.2,<3.0.0"
+
+[[package]]
 name = "dash-extensions"
 version = "0.1.0rc2"
 description = "Extensions for Plotly Dash."
@@ -382,7 +399,7 @@ watchdog = ["watchdog"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "cb5099165849b9ad31bb4c90def6b9bdf427c26638320514c8b2a98bd9278d77"
+content-hash = "41a60e690778d17ef23114203f2db7e5e6c4b0b56ea57a2b9297ccdf647bdff4"
 
 [metadata.files]
 atomicwrites = [
@@ -515,6 +532,10 @@ dash = [
 dash-core-components = [
     {file = "dash_core_components-2.0.0-py3-none-any.whl", hash = "sha256:52b8e8cce13b18d0802ee3acbc5e888cb1248a04968f962d63d070400af2e346"},
     {file = "dash_core_components-2.0.0.tar.gz", hash = "sha256:c6733874af975e552f95a1398a16c2ee7df14ce43fa60bb3718a3c6e0b63ffee"},
+]
+dash-down = [
+    {file = "dash-down-0.0.2.tar.gz", hash = "sha256:52290728865724550cea3f4a659974d9beb5bbf40f8c23743a45680131057e75"},
+    {file = "dash_down-0.0.2-py3-none-any.whl", hash = "sha256:1ea4f34cec9a555dc373757dd2e68e5b6e2a41d0eae5e14f2bc8570689ca19ea"},
 ]
 dash-extensions = [
     {file = "dash-extensions-0.1.0rc2.tar.gz", hash = "sha256:881a4c48ff753f4a42f6ceda769fd3feba5cf46df6e06befafd1035395b2f0ef"},

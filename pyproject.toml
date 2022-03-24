@@ -16,6 +16,7 @@ mistune = "^2.0.2"
 mistletoe = "^0.8.2"
 pytest = "^7.1.1"
 coverage = "^6.3.2"
+dash-down = "^0.0.2"
 
 [tool.poetry.dev-dependencies]
 
