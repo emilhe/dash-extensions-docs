@@ -91,7 +91,7 @@ python-versions = "*"
 
 [[package]]
 name = "dash-down"
-version = "0.0.2"
+version = "0.0.4"
 description = ""
 category = "main"
 optional = false
@@ -99,20 +99,20 @@ python-versions = ">=3.9,<4.0"
 
 [package.dependencies]
 dash = "2.3.0"
-dash-extensions = "0.1.0rc2"
+dash-extensions = "0.1.0rc3"
 dash-iconify = ">=0.1.0,<0.2.0"
 dash-labs = ">=1.0.3,<2.0.0"
 dash-mantine-components = ">=0.6.0,<0.7.0"
-mistletoe = ">=0.8.2,<0.9.0"
 mistune = ">=2.0.2,<3.0.0"
+python-box = ">=6.0.1,<7.0.0"
 
 [[package]]
 name = "dash-extensions"
-version = "0.1.0rc2"
+version = "0.1.0rc3"
 description = "Extensions for Plotly Dash."
 category = "main"
 optional = false
-python-versions = ">=3.9,<4.0"
+python-versions = ">=3.8,<4.0"
 
 [package.dependencies]
 dash = ">=2.3.0,<3.0.0"
@@ -219,7 +219,7 @@ python-versions = "*"
 
 [[package]]
 name = "itsdangerous"
-version = "2.1.1"
+version = "2.1.2"
 description = "Safely pass data to untrusted environments and back."
 category = "main"
 optional = false
@@ -227,11 +227,11 @@ python-versions = ">=3.7"
 
 [[package]]
 name = "jinja2"
-version = "3.0.3"
+version = "3.1.1"
 description = "A very fast and expressive template engine."
 category = "main"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 
 [package.dependencies]
 MarkupSafe = ">=2.0"
@@ -359,6 +359,22 @@ tomli = ">=1.0.0"
 testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "xmlschema"]
 
 [[package]]
+name = "python-box"
+version = "6.0.1"
+description = "Advanced Python dictionaries with dot notation access"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+pyyaml = ["pyyaml"]
+all = ["ruamel.yaml (>=0.17)", "toml", "msgpack"]
+msgpack = ["msgpack"]
+"ruamel.yaml" = ["ruamel.yaml (>=0.17)"]
+toml = ["toml"]
+yaml = ["ruamel.yaml (>=0.17)"]
+
+[[package]]
 name = "six"
 version = "1.16.0"
 description = "Python 2 and 3 compatibility utilities"
@@ -399,7 +415,7 @@ watchdog = ["watchdog"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "41a60e690778d17ef23114203f2db7e5e6c4b0b56ea57a2b9297ccdf647bdff4"
+content-hash = "c940410b7aa2284dc92ba88e75ced57620e81d3929ac9506cd300b8d1520e76f"
 
 [metadata.files]
 atomicwrites = [
@@ -534,12 +550,12 @@ dash-core-components = [
     {file = "dash_core_components-2.0.0.tar.gz", hash = "sha256:c6733874af975e552f95a1398a16c2ee7df14ce43fa60bb3718a3c6e0b63ffee"},
 ]
 dash-down = [
-    {file = "dash-down-0.0.2.tar.gz", hash = "sha256:52290728865724550cea3f4a659974d9beb5bbf40f8c23743a45680131057e75"},
-    {file = "dash_down-0.0.2-py3-none-any.whl", hash = "sha256:1ea4f34cec9a555dc373757dd2e68e5b6e2a41d0eae5e14f2bc8570689ca19ea"},
+    {file = "dash-down-0.0.4.tar.gz", hash = "sha256:b38c3f4bf6d328bced23254b80e824ec1454ec7a6a8049e3957d2e7b3fd7acbf"},
+    {file = "dash_down-0.0.4-py3-none-any.whl", hash = "sha256:64f18b5c924626518be021f5ebce01f3ee56af879d523f4642eacf253ff6dda1"},
 ]
 dash-extensions = [
-    {file = "dash-extensions-0.1.0rc2.tar.gz", hash = "sha256:881a4c48ff753f4a42f6ceda769fd3feba5cf46df6e06befafd1035395b2f0ef"},
-    {file = "dash_extensions-0.1.0rc2-py3-none-any.whl", hash = "sha256:f9c925b50f039cc7661a41530f53cff3cde782ed09b33a1df0b6f26bec673dd7"},
+    {file = "dash-extensions-0.1.0rc3.tar.gz", hash = "sha256:a47fd82040f6ba31e4c72bef9f8de192774690732f77971c0858177d4d1af9c9"},
+    {file = "dash_extensions-0.1.0rc3-py3-none-any.whl", hash = "sha256:db00d43c557d9190651e0e9600969bab932c66b9c26e2eb8044ef1131cf27d06"},
 ]
 dash-html-components = [
     {file = "dash_html_components-2.0.0-py3-none-any.whl", hash = "sha256:b42cc903713c9706af03b3f2548bda4be7307a7cf89b7d6eae3da872717d1b63"},
@@ -582,12 +598,12 @@ iniconfig = [
     {file = "iniconfig-1.1.1.tar.gz", hash = "sha256:bc3af051d7d14b2ee5ef9969666def0cd1a000e121eaea580d4a313df4b37f32"},
 ]
 itsdangerous = [
-    {file = "itsdangerous-2.1.1-py3-none-any.whl", hash = "sha256:935642cd4b987cdbee7210080004033af76306757ff8b4c0a506a4b6e06f02cf"},
-    {file = "itsdangerous-2.1.1.tar.gz", hash = "sha256:7b7d3023cd35d9cb0c1fd91392f8c95c6fa02c59bf8ad64b8849be3401b95afb"},
+    {file = "itsdangerous-2.1.2-py3-none-any.whl", hash = "sha256:2c2349112351b88699d8d4b6b075022c0808887cb7ad10069318a8b0bc88db44"},
+    {file = "itsdangerous-2.1.2.tar.gz", hash = "sha256:5dbbc68b317e5e42f327f9021763545dc3fc3bfe22e6deb96aaf1fc38874156a"},
 ]
 jinja2 = [
-    {file = "Jinja2-3.0.3-py3-none-any.whl", hash = "sha256:077ce6014f7b40d03b47d1f1ca4b0fc8328a692bd284016f806ed0eaca390ad8"},
-    {file = "Jinja2-3.0.3.tar.gz", hash = "sha256:611bb273cd68f3b993fabdc4064fc858c5b47a973cb5aa7999ec1ba405c87cd7"},
+    {file = "Jinja2-3.1.1-py3-none-any.whl", hash = "sha256:539835f51a74a69f41b848a9645dbdc35b4f20a3b601e2d9a7e22947b15ff119"},
+    {file = "Jinja2-3.1.1.tar.gz", hash = "sha256:640bed4bb501cbd17194b3cace1dc2126f5b619cf068a726b98192a0fde74ae9"},
 ]
 jsbeautifier = [
     {file = "jsbeautifier-1.14.0.tar.gz", hash = "sha256:84fdb008d8af89619269a6aca702288b48f837a99427a0f529aa57ecfb36ee3c"},
@@ -669,6 +685,22 @@ pyparsing = [
 pytest = [
     {file = "pytest-7.1.1-py3-none-any.whl", hash = "sha256:92f723789a8fdd7180b6b06483874feca4c48a5c76968e03bb3e7f806a1869ea"},
     {file = "pytest-7.1.1.tar.gz", hash = "sha256:841132caef6b1ad17a9afde46dc4f6cfa59a05f9555aae5151f73bdf2820ca63"},
+]
+python-box = [
+    {file = "python-box-6.0.1.tar.gz", hash = "sha256:3f394c69e1c484eb18a1a1d6e969428ec9cc70b5f47b921da798c2e41b15d1f7"},
+    {file = "python_box-6.0.1-cp310-cp310-macosx_10_15_x86_64.whl", hash = "sha256:214bb6c1305ec937a8f30f01fe76eeff6307bb783c1ee38979ae433514eed9cf"},
+    {file = "python_box-6.0.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:bcd881fedb11f55ce1ec59889e2dc3da98b3cd54126f12c4a3b2e0cb3e1dc1e5"},
+    {file = "python_box-6.0.1-cp310-cp310-win_amd64.whl", hash = "sha256:15419a9b1883f3360f8ad8dd767e8ce20f2006e156012126d208c00fcc7fc6db"},
+    {file = "python_box-6.0.1-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:6793311354ba11c9bdc4a1d40752bcc23a5ba8687c8929dba150e11af592de5e"},
+    {file = "python_box-6.0.1-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:3f26c67d1ca48b96097d73b42b66187e0b11e954f61234784f3619a969a8b2bb"},
+    {file = "python_box-6.0.1-cp37-cp37m-win_amd64.whl", hash = "sha256:802d79fdec6bafc0936ca2a59a3478e9ae95f786e68cc23dcd98a4ad44933c00"},
+    {file = "python_box-6.0.1-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:681f0d05a5db3385ae1b949035a57dd4462aa58f1f7a21df2eb29227f265e002"},
+    {file = "python_box-6.0.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:5ed78335f808162798370949026494da4aeb1530d630a2d98801e107a3a791d3"},
+    {file = "python_box-6.0.1-cp38-cp38-win_amd64.whl", hash = "sha256:a4be4ea156fa9167fef5218ecaa53270ee60aa933fc7e3cc0864675a39b3ae5d"},
+    {file = "python_box-6.0.1-cp39-cp39-macosx_10_15_x86_64.whl", hash = "sha256:4f4a7aa7d57ec7b4182d35e275e9d2ee097e3541030e7bcdd15713404713017d"},
+    {file = "python_box-6.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:234e47576882ddc7df17d7fdbdacaa0e831738fb6619499ec84905f3504c6cdf"},
+    {file = "python_box-6.0.1-cp39-cp39-win_amd64.whl", hash = "sha256:0e37f753bf7031bf25fcf22107a4faa64230dcb81de602f79d9bf5b599f9ef5c"},
+    {file = "python_box-6.0.1-py3-none-any.whl", hash = "sha256:2966c58b7c47770a06ce4bed240556ac2f3f76f68c2ecb6db46123676a8cc8a0"},
 ]
 six = [
     {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},

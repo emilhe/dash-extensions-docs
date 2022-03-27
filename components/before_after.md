@@ -4,8 +4,8 @@ The `BeforeAfter` component is a light wrapper of [react-before-after-slider](ht
 
 <br>
 
-> DashProxy:components.before_after
+.. dash-proxy:: components.before_after
 
 <br>
 
-> ApiDoc:dash_extensions.BeforeAfter
+.. api-doc:: dash_extensions.BeforeAfter

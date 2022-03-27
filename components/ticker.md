@@ -4,8 +4,8 @@ The `Ticker` component is a light wrapper of [react-ticker](https://github.com/A
 
 <br>
 
-> DashProxy:components.ticker
+.. dash-proxy:: components.ticker
 
 <br>
 
-> ApiDoc:dash_extensions.Ticker
+.. api-doc:: dash_extensions.Ticker

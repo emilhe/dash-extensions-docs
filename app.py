@@ -235,4 +235,4 @@ for fn in [fn for fn in os.listdir("components") if fn.endswith(".md")]:
 app.layout = layout(dl.plugins.page_container)
 
 if __name__ == '__main__':
-    app.run_server()
+    app.run_server(port=7878)
