@@ -14,7 +14,6 @@ dash.register_page(
 banner_layout = html.Div(
     [
         dmc.Paper(
-            padding="xl",
             children=[
                 dmc.Center(
                     dmc.Group(

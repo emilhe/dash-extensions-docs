@@ -5,9 +5,10 @@ import dash_extensions
 import dash_mantine_components as dmc
 
 from dash import dcc, html, Dash
+from dash_down.directives import DashProxyDirective
 from dash_iconify import DashIconify
 from collections import defaultdict
-from dash_extensions.enrich import register
+from dash_extensions.enrich import register, DashProxy
 from dash_down.express import md_to_blueprint_dmc
 
 
@@ -23,7 +24,7 @@ def layout(children):
                 [
                     dmc.Container(
                         fluid=True,
-                        padding="lg",
+                        px="lg",
                         style={"marginTop": 90},
                         children=[
                             html.Div(
@@ -37,7 +38,7 @@ def layout(children):
                             page_header(),
                             side_nav(),
                             dmc.Container(
-                                padding="lg",
+                                px="lg",
                                 id="main-content",
                                 children=children,
                             ),
@@ -53,7 +54,7 @@ def page_header():
     return dmc.Header(
         height=70,
         fixed=True,
-        padding="md",
+        p="md",
         children=[
             dmc.Group(
                 position="apart",
@@ -226,13 +227,29 @@ def side_nav():
 
 # endregion
 
-app = Dash(plugins=[dl.plugins.pages])
+def camel(snake_str):
+    return ''.join(map(str.title, snake_str.split('_')))
+
+
+def custom_code_renderer(source, layout, align="horizontal"):
+    columns = 2 if align == "horizontal" else 1
+    return dmc.Grid([
+        dmc.Col(html.Br(), span=columns),
+        dmc.Col(dmc.Prism("".join(source), language="python"), span=1),
+        dmc.Col(layout, span=1),
+        dmc.Col(html.Br(), span=columns),
+    ], columns=columns)
+
+
+app = DashProxy(plugins=[dl.plugins.pages])
+dpd = DashProxyDirective(custom_render=custom_code_renderer)
 # Register component blueprints.
 for fn in [fn for fn in os.listdir("components") if fn.endswith(".md")]:
-    blueprint = md_to_blueprint_dmc(f"components/{fn}")
-    register(blueprint, f"blueprints.components.{fn.replace('.md', '')}")
+    name = fn.replace('.md', '')
+    blueprint = md_to_blueprint_dmc(f"components/{fn}", plugins=[dpd])
+    blueprint.register(app, camel(f"blueprints.components.{name}"), prefix=name)
 # Bind layout.
 app.layout = layout(dl.plugins.page_container)
 
 if __name__ == '__main__':
-    app.run_server(port=7878)
+    app.run_server(port=7879)
