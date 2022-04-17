@@ -1,16 +1,14 @@
-import importlib
 import os
 import dash_labs as dl
 import dash
 import dash_extensions
 import dash_mantine_components as dmc
-from box import Box
 
-from dash import dcc, html, Dash
+from box import Box
 from dash_down.directives import DashProxyDirective, DashDirective
 from dash_iconify import DashIconify
 from collections import defaultdict
-from dash_extensions.enrich import register, DashProxy, DashBlueprint
+from dash_extensions.enrich import dcc, html, DashProxy, DashBlueprint
 from dash_down.express import md_to_blueprint_dmc
 
 
@@ -237,27 +235,22 @@ def camel(snake_str):
 
 def custom_code_renderer(source, layout, align="horizontal", render=True):
     columns = 2 if align == "horizontal" else 1
-    code = [
-        dmc.Col(html.Br(), span=columns),
-        dmc.Col(dmc.Prism("".join(source), language="python"), span=1),
-    ]
-    app_layout = [
-        dmc.Col(layout, span=1),
-        dmc.Col(html.Br(), span=columns),
-    ]
-    return dmc.Grid(code + (app_layout if render else []), columns=columns)
+    code = [dmc.Col(dmc.Prism("".join(source), language="python"), span=1)]
+    app_layout = [dmc.Col(layout, span=1)]
+    return dmc.Grid(code + (app_layout if render else []), columns=columns, style=dict(marginBottom=50))
 
 
 class PythonDirective(DashDirective):
     def render_directive(self, value: str, text: str, options: Box[str, str], blueprint: DashBlueprint):
         with open(f"{value.replace('.', '/')}.py", 'r') as f:
             source = f.readlines()
-        return dmc.Grid([
-                dmc.Col(html.Br(), span=1),
-                dmc.Col(dmc.Prism("".join(source), language="python"), span=1),
-                dmc.Col(html.Br(), span=1),
-            ], columns=1)
+        return dmc.Prism("".join(source), language="python", style=dict(marginBottom=50))
 
+def register_folder(folder):
+    for fn in [fn for fn in os.listdir(folder) if fn.endswith(".md")]:
+        name = fn.replace('.md', '')
+        blueprint = md_to_blueprint_dmc(f"{folder}/{fn}", plugins=[dpd, PythonDirective()])
+        blueprint.register(app, camel(f"pages.{folder}.{name}"), prefix=name)
 
 # endregion
 
@@ -265,10 +258,12 @@ class PythonDirective(DashDirective):
 app = DashProxy(plugins=[dl.plugins.pages])
 dpd = DashProxyDirective(custom_render=custom_code_renderer)
 # Register component blueprints.
-for fn in [fn for fn in os.listdir("components") if fn.endswith(".md")]:
-    name = fn.replace('.md', '')
-    blueprint = md_to_blueprint_dmc(f"components/{fn}", plugins=[dpd, PythonDirective()])
-    blueprint.register(app, camel(f"blueprints.components.{name}"), prefix=name)
+register_folder("components")
+register_folder("transforms")
+# for fn in [fn for fn in os.listdir("components") if fn.endswith(".md")]:
+#     name = fn.replace('.md', '')
+#     blueprint = md_to_blueprint_dmc(f"components/{fn}", plugins=[dpd, PythonDirective()])
+#     blueprint.register(app, camel(f"blueprints.components.{name}"), prefix=name)
 # Bind layout.
 app.layout = layout(dl.plugins.page_container)
 

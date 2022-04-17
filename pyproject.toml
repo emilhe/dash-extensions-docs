@@ -20,6 +20,7 @@ dash-down = "^0.0.8"
 uvicorn = "^0.17.6"
 starlette = "^0.19.0"
 sse-starlette = "^0.10.3"
+pandas = "^1.4.2"
 
 [tool.poetry.dev-dependencies]
 quart = "^0.17.0"
