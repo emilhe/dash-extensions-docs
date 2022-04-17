@@ -16,4 +16,4 @@ app.layout = html.Div([
 app.clientside_callback(update_graph, Output("graph", "figure"), Input("ws", "message"))
 
 if __name__ == "__main__":
-    app.run_server(port=9898)
+    app.run_server()

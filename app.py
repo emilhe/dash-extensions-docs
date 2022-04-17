@@ -6,6 +6,7 @@ import dash_mantine_components as dmc
 
 from box import Box
 from dash_down.directives import DashProxyDirective, DashDirective
+from dash_down.plugins import PluginBlueprint
 from dash_iconify import DashIconify
 from collections import defaultdict
 from dash_extensions.enrich import dcc, html, DashProxy, DashBlueprint
@@ -76,6 +77,12 @@ def page_header():
                                 variant="outline",
                                 radius="xl",
                             ),
+                            # html.A(
+                            #     dmc.Image(
+                            #         src="https://img.shields.io/pypi/v/dash-extensions.svg", radius="xl"
+                            #     ), href="https://pypi.org/project/dash-extensions/"
+                            # )
+
                         ]
                     ),
                     dmc.Group(
@@ -233,18 +240,19 @@ def camel(snake_str):
     return ''.join(map(str.title, snake_str.split('_')))
 
 
-def custom_code_renderer(source, layout, align="horizontal", render=True):
-    columns = 2 if align == "horizontal" else 1
+def custom_code_renderer(source, layout, render=True):
     code = [dmc.Col(dmc.Prism("".join(source), language="python"), span=1)]
-    app_layout = [dmc.Col(layout, span=1)]
-    return dmc.Grid(code + (app_layout if render else []), columns=columns, style=dict(marginBottom=50))
+    layout = html.Div(layout, style=dict(boxShadow="0px 3px 6px rgb(0 0 0 / 20%)", borderRadius="0px", padding="16px"))
+    app_layout = [dmc.Col(layout, span=1, style=dict(paddingLeft="8px", paddingRight="8px", marginTop="-14px"))]
+    return dmc.Grid(code + (app_layout if render else []), columns=1, style=dict(marginBottom="16px"))
 
 
 class PythonDirective(DashDirective):
     def render_directive(self, value: str, text: str, options: Box[str, str], blueprint: DashBlueprint):
         with open(f"{value.replace('.', '/')}.py", 'r') as f:
             source = f.readlines()
-        return dmc.Prism("".join(source), language="python", style=dict(marginBottom=50))
+        return dmc.Prism("".join(source), language="python")
+
 
 def register_folder(folder):
     for fn in [fn for fn in os.listdir(folder) if fn.endswith(".md")]:
@@ -252,9 +260,11 @@ def register_folder(folder):
         blueprint = md_to_blueprint_dmc(f"{folder}/{fn}", plugins=[dpd, PythonDirective()])
         blueprint.register(app, camel(f"pages.{folder}.{name}"), prefix=name)
 
+
 # endregion
 
 
+# dp = PluginBlueprint(layout=lambda x: html.Div(x, className="light markdown-body"))
 app = DashProxy(plugins=[dl.plugins.pages])
 dpd = DashProxyDirective(custom_render=custom_code_renderer)
 # Register component blueprints.

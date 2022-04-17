@@ -16,5 +16,5 @@ Including an `EventSource` component (with the `url` property set to match the e
 
 To run the example(s) above, it is recommended to start the server in one terminal, and the app in another. 
 
-.. api-doc:: dash_extensions.WebSocket
+.. api-doc:: dash_extensions.EventSource
 

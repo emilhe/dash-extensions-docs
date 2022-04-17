@@ -16,7 +16,7 @@ mistune = "^2.0.2"
 mistletoe = "^0.8.2"
 pytest = "^7.1.1"
 coverage = "^6.3.2"
-dash-down = "^0.0.8"
+dash-down = {path = "../dash-down/dist/dash-down-0.0.11.tar.gz"}
 uvicorn = "^0.17.6"
 starlette = "^0.19.0"
 sse-starlette = "^0.10.3"

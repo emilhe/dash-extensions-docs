@@ -3,7 +3,6 @@
 The `EventListener` component makes it possible to listen to (arbitrary) JavaScript events. Simply wrap the relevant components in an `EventListener` component, specify which event(s) to subscribe to, and what event properties to send back to Dash,
 
 .. dash-proxy:: components.event_listener
-   :align: vertical
 
 If you are not sure what properties are available/what properties you need, you can pass `logging=True` to the `EventListener` component to print the event object tree to the JavaScript console. For the example above, the Chrome developer console output would be,
 

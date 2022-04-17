@@ -17,4 +17,4 @@ def message(e):
     return f"Response from websocket: {e['data']}"
 
 if __name__ == '__main__':
-    app.run_server(port=8888)
+    app.run_server()
