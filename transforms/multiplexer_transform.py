@@ -3,8 +3,8 @@ from dash_extensions.enrich import Output, DashProxy, Input, MultiplexerTransfor
 
 app = DashProxy(transforms=[MultiplexerTransform()])
 app.layout = html.Div([
-    html.Button("left", id="left"),
-    html.Button("right", id="right"),
+    html.Button("Left", id="left"),
+    html.Button("Right", id="right"),
     html.Div(id="log")
 ])
 

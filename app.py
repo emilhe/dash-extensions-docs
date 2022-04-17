@@ -258,7 +258,7 @@ def register_folder(folder):
     for fn in [fn for fn in os.listdir(folder) if fn.endswith(".md")]:
         name = fn.replace('.md', '')
         blueprint = md_to_blueprint_dmc(f"{folder}/{fn}", plugins=[dpd, PythonDirective()])
-        blueprint.register(app, camel(f"pages.{folder}.{name}"), prefix=name)
+        blueprint.register(app, camel(f"pages.{folder}.{name}"), prefix=name, name=camel(name))
 
 
 # endregion

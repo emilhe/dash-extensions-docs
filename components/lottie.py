@@ -4,7 +4,7 @@ from dash_extensions import Lottie
 app = DashProxy()
 app.layout = Lottie(
     options=dict(loop=True, autoplay=True, rendererSettings=dict(preserveAspectRatio='xMidYMid slice')),
-    width="256px", url="https://assets9.lottiefiles.com/packages/lf20_YXD37q.json"
+    width="50%", url="https://assets8.lottiefiles.com/packages/lf20_bkwin39r.json"
 )
 
 if __name__ == '__main__':
