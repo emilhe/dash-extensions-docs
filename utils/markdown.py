@@ -28,7 +28,7 @@ def dash_proxy_shell(source, layout, render=True):
 
 
 def blueprint_shell(children):
-    return html.Div(children, style=dict(marginBottom="16px"))
+    return html.Div(children, style=dict(marginBottom="16px"), className="markdown-body")
 
 
 def register_folder(app, folder, order=None, order_map=None):
