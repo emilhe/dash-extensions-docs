@@ -1,4 +1,4 @@
-### BlockingCallbackTransform
+## BlockingCallbackTransform
 
 The `BlockingCallbackTransform` makes it possible to avoid invoking a callback _if it is already running_. A typical use case is while polling data at an interval (say 1s) that is longer than the time it takes the callback to execute (say, 5s). The transform is applied per callback by passing the `blocking` flag. Here is a small example,
 

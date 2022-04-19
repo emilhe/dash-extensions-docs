@@ -1,4 +1,4 @@
-### LogTransform
+## LogTransform
 
 The `LogTransform` makes it possible to direct logs to a Dash component. When `log=True` is passed as a keyword argument to a callback, a `DashLogger` object is passed to the callback as the last argument. Here is a small example,
 

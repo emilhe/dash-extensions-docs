@@ -1,4 +1,4 @@
-### NoOutputTransform
+## NoOutputTransform
 
 The `NoOutputTransform` makes it possible to create callbacks without an `Output`. Here is a small example,
 

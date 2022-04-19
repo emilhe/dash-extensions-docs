@@ -1,4 +1,4 @@
-### MultiplexerTransform
+## MultiplexerTransform
 
 The `MultiplexerTransform` makes it possible to target an output by multiple callbacks. Here is a small example,
 
@@ -6,7 +6,7 @@ The `MultiplexerTransform` makes it possible to target an output by multiple cal
 
 Under the hood, when `n` > 1 callbacks target the same element as output, _n_ `Store` elements are created, and the callbacks are redirect to target these intermediate outputs. Finally, a callback is added with the intermediate outputs as inputs and the original output as output. The strategy was contributed by [dwelch91](https://community.plotly.com/u/dwelch91/summary).
 
-##### Wrappers, e.g. dcc.Loading
+### Wrappers, e.g. dcc.Loading
 
 Since the `MultiplexerTransform` modifies the original callback to target a proxy component, wrappers (such as the `Loading` component) targeting the original output will not work as intended. If the output is static (i.e. not recreated by callbacks), the issue can be avoided by injecting the proxy component next to the original output in the component tree,
 
@@ -21,6 +21,6 @@ proxy_wrapper_map = {Output("log0", "children"): lambda proxy: dcc.Loading(proxy
 app = DashProxy(transforms=[MultiplexerTransform(proxy_wrapper_map)])
 ```
 
-##### Know limitations
+### Know limitations
 
 The `MultiplexerTransform` does not support the `MATCH` and `ALLSMALLER` wildcards. The `MultiplexerTransform` does not support `ServersideOutput`.
