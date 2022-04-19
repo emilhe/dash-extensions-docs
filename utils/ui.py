@@ -224,7 +224,3 @@ def side_nav():
             )
         ],
     )
-
-
-def blueprint_shell(children):
-    return html.Div(children, style=dict(marginBottom="16px"))

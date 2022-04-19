@@ -10,7 +10,7 @@ As a first example, consider a scenario where you want to stream data in real ti
 
 Including a `WebSocket` component (with the `url` property set to match the websocket endpoint) in the layout of a Dash app, one can stream the data via a callback attached to the `message` property. Here is a small Dash app, that plots the emitted data in real time,
 
-.. python:: components.websocket_streaming_client
+.. python-code:: components.websocket_streaming_client
 
 A client-side callback has been used to optimize performance, but normal callbacks will work too.
 
@@ -18,11 +18,11 @@ A client-side callback has been used to optimize performance, but normal callbac
 
 As the websocket protocol is bidirectional, it is also possible to send data to the server. This can be done via the `send` property. As a simple example, consider the following app,
 
-.. python:: components.websocket_client
+.. python-code:: components.websocket_client
 
 Here, a text input is sent via the websocket in the `send` callback, and the processed message is read in `message` callback, and printed to the log. A corresponding echo server implementation (i.e. a server that just returns the message received) in Quart would be,
 
-.. python:: components.websocket_server
+.. python-code:: components.websocket_server
 
 ### Notes
 
