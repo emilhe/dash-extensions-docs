@@ -6,6 +6,8 @@ from dash_down.directives import DashDirective
 from dash_down.express import md_to_blueprint_dmc
 from dash_extensions.enrich import html, DashBlueprint
 
+from utils.ui import blueprint_shell
+
 
 def camel(snake_str):
     return ''.join(map(str.title, snake_str.split('_')))
@@ -29,5 +31,5 @@ def register_folder(app, folder, plugins, order=None, order_map=None):
     for fn in [fn for fn in os.listdir(folder) if fn.endswith(".md")] :
         name = fn.replace('.md', '')
         order = order_map[name] if order_map is not None and name in order_map else order
-        blueprint = md_to_blueprint_dmc(f"{folder}/{fn}", plugins=plugins)
+        blueprint = md_to_blueprint_dmc(f"{folder}/{fn}", plugins=plugins, shell=blueprint_shell)
         blueprint.register(app, f"pages.{folder}.{name}", prefix=name, name=camel(name), order=order)

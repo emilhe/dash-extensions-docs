@@ -1,3 +1,5 @@
+## Enrich
+
 The `enrich` module provides a number of enrichment's of the `Dash` object that can be enabled in a modular fashion. To get started, replace the `Dash` object by a `DashProxy` object and pass the desired transformations via the `transforms` keyword argument, 
 
 ```python

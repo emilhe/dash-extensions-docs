@@ -7,9 +7,7 @@ from dash_extensions.enrich import dcc, html
 from dash_iconify import DashIconify
 
 IGNORE_SECTIONS = "Home"
-MAP_SECTIONS = {
-    "": ""
-}
+
 
 def app_shell(children):
     return dmc.MantineProvider(
@@ -226,3 +224,7 @@ def side_nav():
             )
         ],
     )
+
+
+def blueprint_shell(children):
+    return html.Div(children, style=dict(marginBottom="16px"))

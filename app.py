@@ -1,12 +1,13 @@
 import dash_labs as dl
 
 from dash_down.directives import DashProxyDirective
+from dash_down.plugins import DashBlueprint
 from dash_extensions.enrich import DashProxy
-
 from utils.markdown import register_folder, custom_code_renderer, PythonDirective
 from utils.ui import app_shell
 
 app = DashProxy(plugins=[dl.plugins.pages])
+pd = DashBlueprint()
 dpd = DashProxyDirective(custom_render=custom_code_renderer)
 plugins = [dpd, PythonDirective()]
 # Register component blueprints.
