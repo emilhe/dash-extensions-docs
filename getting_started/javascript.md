@@ -53,3 +53,4 @@ import dash_leaflet as dl
 from dash_extensions.javascript import arrow_function
 ...
 geojson = dl.GeoJSON(hoverStyle=arrow_function(dict(weight=5, color='#666', dashArray='')), ...)
+```
