@@ -25,8 +25,9 @@ class PythonDirective(DashDirective):
         return dmc.Prism("".join(source), language="python")
 
 
-def register_folder(app, folder, plugins, order=None):
-    for fn in [fn for fn in os.listdir(folder) if fn.endswith(".md")]:
+def register_folder(app, folder, plugins, order=None, order_map=None):
+    for fn in [fn for fn in os.listdir(folder) if fn.endswith(".md")] :
         name = fn.replace('.md', '')
+        order = order_map[name] if order_map is not None and name in order_map else order
         blueprint = md_to_blueprint_dmc(f"{folder}/{fn}", plugins=plugins)
         blueprint.register(app, f"pages.{folder}.{name}", prefix=name, name=camel(name), order=order)

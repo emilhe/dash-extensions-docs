@@ -10,9 +10,9 @@ app = DashProxy(plugins=[dl.plugins.pages])
 dpd = DashProxyDirective(custom_render=custom_code_renderer)
 plugins = [dpd, PythonDirective()]
 # Register component blueprints.
-register_folder(app, "getting_started", plugins, order=0)
-register_folder(app, "transforms", plugins, order=1)
-register_folder(app, "components", plugins, order=2)
+register_folder(app, "getting_started", plugins, order_map=dict(installation=0, javascript=1, enrich=2))
+register_folder(app, "transforms", plugins, order=10)
+register_folder(app, "components", plugins, order=20)
 # Bind layout.
 app.layout = app_shell(dl.plugins.page_container)
 
