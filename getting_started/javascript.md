@@ -1,4 +1,4 @@
-    ## Javascript
+## Javascript
 
 In Dash, component properties must be JSON serializable. However, many React components take JavaScript functions (or objects) as inputs, which can make it tedious to write Dash wrappers. To ease the process, `dash-extensions` implements a simple bridge for passing function handles (and other variables) as component properties. The `javascript` module is the Python side of the bridge, while the `dash-extensions` package [on npm](https://www.npmjs.com/package/dash-extensions) forms the JavaScript side. 
 

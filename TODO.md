@@ -4,4 +4,6 @@
 * Update dash-down version
 * Update dash-extensions version
 * Update dash-down-docs
-* ADD DOC ON PREFIX ID TRANSFORM
+
+* Test dynamically generated components with prefix. Solution is in-progress
+* Maybe add complicated download 
