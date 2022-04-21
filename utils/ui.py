@@ -70,12 +70,6 @@ def page_header():
                                 variant="outline",
                                 radius="xl",
                             ),
-                            # html.A(
-                            #     dmc.Image(
-                            #         src="https://img.shields.io/pypi/v/dash-extensions.svg", radius="xl"
-                            #     ), href="https://pypi.org/project/dash-extensions/"
-                            # )
-
                         ]
                     ),
                     dmc.Group(
@@ -125,28 +119,6 @@ def page_header():
                                 href="https://github.com/emilhe/dash-extensions-docs",
                                 className="hide-sm",
                             ),
-                            # html.A(
-                            #     dmc.Button(
-                            #         dmc.Text(
-                            #             "Discord",
-                            #             color="dark",
-                            #             weight="lighter",
-                            #             size="sm",
-                            #         ),
-                            #         radius="xl",
-                            #         variant="light",
-                            #         color="gray",
-                            #         rightIcon=[
-                            #             DashIconify(
-                            #                 icon="fa-brands:discord",
-                            #                 width=20,
-                            #                 color="#7289da",
-                            #             )
-                            #         ],
-                            #     ),
-                            #     href="https://discord.gg/KuJkh4Pyq5",
-                            #     className="hide-sm",
-                            # ),
                             dmc.Select(
                                 id="select-component",
                                 style={"width": 300},
