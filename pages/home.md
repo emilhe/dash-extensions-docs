@@ -5,7 +5,7 @@ The `dash-extensions` package can be divided in four main pillars,
 * The [`javascript` module](), which contains functionality to ease the interplay between Dash and JavaScript
 * The `snippets` module, which contains a collection of utility functions (documentation limited to source code comments)
 
-The `enrich` module enables a number of _transforms_ that add functionality and/or syntactic sugar. Examples include
+The `enrich` module enables a number of _transforms_ that add functionality and/or syntactic sugar to Dash. Examples include
 
 * Making it possible to target an `Output` by multiple callbacks via the [MultiplexerTransform]()
 * Enabling logging from within Dash callbacks via the [LogTransform]()

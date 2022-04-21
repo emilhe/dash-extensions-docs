@@ -6,7 +6,7 @@ The `WebSocket` component enables communication via _websockets_ in Dash. As com
 
 As a first example, consider a scenario where you want to stream data in real time. It could be from a sensor, a data processing pipeline, or something different; the data origin is not important. For simplicity, let's consider a [Quart](https://pgjones.gitlab.io/quart/) server that emits 10 random numbers every second,
 
-.. python:: components.websocket_streaming_server
+.. python-code:: components.websocket_streaming_server
 
 Including a `WebSocket` component (with the `url` property set to match the websocket endpoint) in the layout of a Dash app, one can stream the data via a callback attached to the `message` property. Here is a small Dash app, that plots the emitted data in real time,
 

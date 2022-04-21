@@ -1,7 +1,6 @@
 import dash
 import dash_extensions
 import dash_mantine_components as dmc
-
 from collections import defaultdict
 from dash_extensions.enrich import dcc, html
 from dash_iconify import DashIconify

@@ -27,7 +27,7 @@ Other recommended/related packages include
 * [`dash-leaflet`](https://github.com/thedirtyfew/dash-leaflet) for creating map visualizations in Dash
 * [`dash-down`](https://github.com/emilhe/dash-down) for converting markdown to Dash applications
 
-This documentation is a Dash app creating using `dash-mantine-components`, `dash-iconify`, and `dash-down`.
+This documentation is itself a Dash app created using `dash-mantine-components`, `dash-iconify`, and `dash-down`.
 
 
 

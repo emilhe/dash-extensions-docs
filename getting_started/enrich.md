@@ -1,6 +1,13 @@
 ## Enrich
 
-The `enrich` module provides a number of enrichment's of the `Dash` object that can be enabled in a modular fashion. To get started, replace the `Dash` object by a `DashProxy` object and pass the desired transformations via the `transforms` keyword argument, 
+The `enrich` module provides a number of enrichments of the `Dash` object that can be enabled in a modular fashion. To get started, replace imports from `Dash` with imports from `dash_extensions.enrich`,
+
+```python
+from dash import Input, Output, html, ...  # before
+from dash_extensions.enrich import Input, Output, html, ...  # after
+```
+
+and exchange the `Dash` object with a `DashProxy` object with the desired transformations enabled,
 
 ```python
 from dash_extensions.enrich import DashProxy, TriggerTransform, MultiplexerTransform, ServersideOutputTransform, NoOutputTransform, BlockingCallbackTransform, LogTransform
@@ -17,4 +24,76 @@ app = DashProxy(transforms=[
 
 The `enrich` module also exposes a `Dash` object, which is a `DashProxy` object with all transformations loaded, i.e. a batteries included approach. However, it is recommended to load only the transforms are that actually used.
 
-NB: Transforms are not (yet) compatible the `long_callback` decorator.
+The transforms are documented in detail on separate pages (see the **Transforms** section in the menu to the right), while underlying framework is documented below. The framework documentation is not limited to technical details, but cover also practical applications of the `enrich` module functionality such as modular Dash application development, and how to get started developing your own transforms. Hence, to get the most of the `enrich` module, it is recommended to keep reading.
+
+### DashBlueprint
+
+Inspired by [Flask blueprints](https://flask.palletsprojects.com/en/2.1.x/blueprints/), the `enrich` module introduces the concept of blueprints in a Dash context via the `DashBlueprint` object. It 
+encapsulates a Dash layout along with associated callbacks, thus enabling modular Dash application development. The syntax for creating a blueprint is the same as for regular Dash applications,
+
+```python
+from dash_extensions.enrich import DashBlueprint, html, Output, Input
+
+bp = DashBlueprint()
+bp.layout = html.Div([html.Button('Click me!', id='btn'), html.Div(id='log')])
+
+@bp.callback(Output('log', 'children'), Input('btn', 'n_clicks'))
+def on_click(n_clicks):
+    return f"Hello world {n_clicks}!"
+```
+
+Since blueprints do not reference the Dash application object, they can be defined in files separate from the Dash application. Or even in a different library. The most common ways to bring a blueprint to life are by
+
+* Turning it into a Dash application via the [`DashProxy` object](#a-dashproxy)
+* [Embedding](#a-embedding) it in an existing Dash application
+* Registering it [as a page](#a-pages) in an existing Dash application using the [pages plugin](https://github.com/plotly/dash-labs)
+
+To avoid id collisions between blueprints, _id prefixing_ is supported via the `PrefixIdTransform`. Hence it is possible to use blueprints with the same ids in the same application; or even use the same blueprint multiple times.
+
+#### DashProxy
+
+The `DashProxy` object is a thin wrapper around `DashBlueprint` that turns it into a drop-in replacement for the `dash.Dash` application object,
+
+.. python-code:: getting_started.dash_proxy
+
+Like the (raw) `DashBlueprint` object, the `DashProxy` object supports [transformations](#a-dashtransform).
+
+#### Embedding
+
+To embed a blueprint in a Dash application, use the `register_callbacks` function to transfer the callbacks from the blueprint to the Dash app and embed the `layout` where needed,
+
+.. python-code:: getting_started.embedding
+
+As it is possible to embed any number of blueprints, this strategy can be used to modularize the Dash application development.
+
+#### Pages
+
+Using the embedding approach described above, it is possible to register blueprints as separate pages in a multipage application setup, but it requires a bit of code. If you are using the [pages plugin](https://github.com/plotly/dash-labs), the process is streamlined via the `register` function,
+
+.. python-code:: getting_started.pages
+
+Note that because the pages are registered with different values for the `prefix` argument, each page works even though the component ids are overlapping.
+
+### DashTransform
+
+A `DashTransform` is a _transformation_ of one `DashBlueprint` into another. Since a blueprint holds both callback and layout information, transforms can make arbitrary modifications of both. Transforms can be passed via the `transforms` keyword of `DashBlueprint` and/or `DashProxy`. The key purpose of transforms is to make it possibly to encapsulate blocks of application logic, and abstract it away. 
+
+As a simple example, let's consider the case of callbacks that are invoked only for their side effects, i.e. there is no (meaningful) output. A typical example is executing a small JavaScript snippet. In Dash, a callback _must_ have an output, so the workaround for this case would be to add a dummy output,
+
+.. python-code:: getting_started.side_effect
+
+While this code _works_, it is not very elegant. Now, let's think about how the syntax _should_ be. 
+The simplest would probably be just to omit the output all together. The required steps to turn this desired syntax into valid Dash syntax would be to
+
+* Identify all callbacks that have no outputs
+* For each of these callbacks, create a dummy output element, and add it to the application layout
+* For each of these callbacks, assign the respective dummy element as the output
+
+The steps above defines a _transformation_ of one `DashBlueprint` into another, and can thus be implemented as a `DashTransform`. Using the resulting `NoOutputTransform` (if you are interested in the details, take a look at the [source code](https://github.com/thedirtyfew/dash-extensions/blob/master/dash_extensions/enrich.py)), the previous example can be written as,
+
+.. python-code:: getting_started.side_effect_transform
+
+### Known limitations
+
+* Transforms are not (yet) compatible the `long_callback` decorator
+
