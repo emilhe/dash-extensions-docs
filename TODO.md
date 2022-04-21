@@ -6,4 +6,3 @@
 * Update dash-down-docs
 
 * Test dynamically generated components with prefix. Solution is in-progress
-* Maybe add complicated download 
