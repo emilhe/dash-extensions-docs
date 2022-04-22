@@ -18,7 +18,7 @@ def app_shell(children):
                 [
                     dmc.Container(
                         fluid=True,
-                        px="lg",
+                        p="lg",
                         style={"marginTop": 90},
                         children=[
                             html.Div(
@@ -32,7 +32,7 @@ def app_shell(children):
                             page_header(),
                             side_nav(),
                             dmc.Container(
-                                px="lg",
+                                p="lg",
                                 id="main-content",
                                 children=children,
                             ),
