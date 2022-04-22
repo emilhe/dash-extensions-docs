@@ -2,7 +2,7 @@
 name = "aiofiles"
 version = "0.8.0"
 description = "File support for asyncio."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6,<4.0"
 
@@ -60,7 +60,7 @@ tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>
 name = "blinker"
 version = "1.4"
 description = "Fast, simple object-to-object and broadcast signaling"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -135,7 +135,7 @@ python-versions = "*"
 
 [[package]]
 name = "dash-down"
-version = "0.0.13rc7"
+version = "0.1.0"
 description = ""
 category = "main"
 optional = false
@@ -143,16 +143,15 @@ python-versions = ">=3.7"
 
 [package.dependencies]
 dash = "2.3.1"
-dash-extensions = "0.1.0rc10"
-dash-iconify = ">=0.1.0,<0.2.0"
-dash-labs = ">=1.0.3,<2.0.0"
+dash-extensions = "0.1.0"
+dash-iconify = ">=0.1.2,<0.2.0"
 dash-mantine-components = ">=0.7.0,<0.8.0"
 mistune = ">=2.0.2,<3.0.0"
 python-box = ">=6.0.1,<7.0.0"
 
 [[package]]
 name = "dash-extensions"
-version = "0.1.0rc10"
+version = "0.1.0"
 description = "Extensions for Plotly Dash."
 category = "main"
 optional = false
@@ -174,7 +173,7 @@ python-versions = "*"
 
 [[package]]
 name = "dash-iconify"
-version = "0.1.0"
+version = "0.1.2"
 description = "Iconify for Plotly Dash"
 category = "main"
 optional = false
@@ -266,7 +265,7 @@ python-versions = ">=3.6"
 name = "h2"
 version = "4.1.0"
 description = "HTTP/2 State-Machine based protocol implementation"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6.1"
 
@@ -278,7 +277,7 @@ hyperframe = ">=6.0,<7"
 name = "hpack"
 version = "4.0.0"
 description = "Pure-Python HPACK header compression"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6.1"
 
@@ -286,7 +285,7 @@ python-versions = ">=3.6.1"
 name = "hypercorn"
 version = "0.13.2"
 description = "A ASGI Server based on Hyper libraries and inspired by Gunicorn"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 
@@ -306,7 +305,7 @@ uvloop = ["uvloop"]
 name = "hyperframe"
 version = "6.0.1"
 description = "HTTP/2 framing layer for Python"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6.1"
 
@@ -484,7 +483,7 @@ testing = ["pytest", "pytest-benchmark"]
 name = "priority"
 version = "2.0.0"
 description = "A pure-Python implementation of the HTTP/2 priority tree"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6.1"
 
@@ -567,7 +566,7 @@ python-versions = "*"
 name = "quart"
 version = "0.17.0"
 description = "A Python ASGI web microframework with the same API as Flask"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 
@@ -642,7 +641,7 @@ doc = ["reno", "sphinx", "tornado (>=4.5)"]
 name = "toml"
 version = "0.10.2"
 description = "Python Library for Tom's Obvious, Minimal Language"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
@@ -693,7 +692,7 @@ watchdog = ["watchdog"]
 name = "wsproto"
 version = "1.1.0"
 description = "WebSockets state-machine based protocol implementation"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7.0"
 
@@ -723,7 +722,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "7394f19773a0cc1e38627c7d2e93d2383c46027308e7f8f07194cc0da308f570"
+content-hash = "b92493fa3a89b2091712afe2f8bf8fed582980a6fd7544d9749c49af80308446"
 
 [metadata.files]
 aiofiles = [
@@ -873,20 +872,20 @@ dash-core-components = [
     {file = "dash_core_components-2.0.0.tar.gz", hash = "sha256:c6733874af975e552f95a1398a16c2ee7df14ce43fa60bb3718a3c6e0b63ffee"},
 ]
 dash-down = [
-    {file = "dash-down-0.0.13rc7.tar.gz", hash = "sha256:bdeec44172ca5cf19bb32028c3f031396071b8a21fec4ce30af61dfb5d3a537b"},
-    {file = "dash_down-0.0.13rc7-py3-none-any.whl", hash = "sha256:c1c7a8b5bf50623d48326c6e491e300aafe38707b582e7c273f57f7d781e1015"},
+    {file = "dash-down-0.1.0.tar.gz", hash = "sha256:fb0a481781a88ecfc5fbee3b5753091135d3b084a18444a8fd7b02257b8ab6d9"},
+    {file = "dash_down-0.1.0-py3-none-any.whl", hash = "sha256:dc91a45b4a84642a494e86bc6e5c9a07cd9c5bf20728f5db2e7c800f45bae8ac"},
 ]
 dash-extensions = [
-    {file = "dash-extensions-0.1.0rc10.tar.gz", hash = "sha256:1123b064cb412a58a69833f8aadec2c043898f1927d9be229c742058eface842"},
-    {file = "dash_extensions-0.1.0rc10-py3-none-any.whl", hash = "sha256:73fe545205add79ccaffada47a274f5d2ceee519bcf57c5af2d171527539d520"},
+    {file = "dash-extensions-0.1.0.tar.gz", hash = "sha256:b5e5727ab1eb3f011ce895fbe03beeb6fa19d682fce933ca7093725453599cc4"},
+    {file = "dash_extensions-0.1.0-py3-none-any.whl", hash = "sha256:7556bf8525e0796c462eaca8283876f4942057c0b4939d4624b1d82a93bb3abb"},
 ]
 dash-html-components = [
     {file = "dash_html_components-2.0.0-py3-none-any.whl", hash = "sha256:b42cc903713c9706af03b3f2548bda4be7307a7cf89b7d6eae3da872717d1b63"},
     {file = "dash_html_components-2.0.0.tar.gz", hash = "sha256:8703a601080f02619a6390998e0b3da4a5daabe97a1fd7a9cebc09d015f26e50"},
 ]
 dash-iconify = [
-    {file = "dash_iconify-0.1.0-py3-none-any.whl", hash = "sha256:267693fb16492f87945a8ee160a320156e61bba23a3ee6372def0d9cedcebb89"},
-    {file = "dash_iconify-0.1.0.tar.gz", hash = "sha256:c705a0b6c0b8a0a0e2b49fe80d5a3a8649c739632c02286c06c667fb0849c935"},
+    {file = "dash_iconify-0.1.2-py3-none-any.whl", hash = "sha256:9ab0eda19bb4514e177bf1f8f36947bb9e5b44aba6ce947f22a1cf0f1a45fc14"},
+    {file = "dash_iconify-0.1.2.tar.gz", hash = "sha256:564774be6b11b0ac3a8999b7137c3d17a1d351d69b673aa313c7228eacc9d143"},
 ]
 dash-labs = [
     {file = "dash-labs-1.0.3.tar.gz", hash = "sha256:5be2e5568e4831330648bf68cb39507d9622adaa66a32a38cd61eb7242594cb8"},

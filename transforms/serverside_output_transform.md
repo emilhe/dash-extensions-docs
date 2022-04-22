@@ -20,7 +20,7 @@ def query_data(n_clicks):
     ...
 ```
 
-In addition to the `FileSystemStore`, a `RedisStore` is also available that binds to a Redis server. If you need other storage options, t is straight forward to implement a new backend using other storage options. Just create a new class that implements the following interface,
+In addition to the `FileSystemStore`, a `RedisStore` is also available that binds to a Redis server. If you need other storage options, it is straight forward to implement a new backend using other storage options. Just create a new class that implements the following interface,
 
 ```python
 def get(self, key, ignore_expired=False) -> any:
@@ -31,7 +31,7 @@ If `ignore_expired=True`, the function **must** return the value, even if it has
 
 ### Backend cleanup
 
-The default `FileSystemStore` doesn't include any clean up mechanism. Hence, the caching directory (per default `file_system_store`) will grow in size indefinitely as the app is used. If space is an issue, it is recommended to perform scheduled cleanups outside business hours, e.g. every night a 3 am. Other backends (e.g. Redis) performs the cleanup automatically.
+The default `FileSystemStore` doesn't include any clean up mechanism. Hence, the caching directory (per default `file_system_store`) will grow in size indefinitely as the app is used. If space is an issue, it is recommended to perform scheduled cleanups outside business hours, I typically do it every night at 3 am. Other backends (e.g. Redis) performs the cleanup automatically.
 
 ### Memoization
 
@@ -89,3 +89,4 @@ Now, this is fun and all, but no one uses their local host for deployment. So le
 
 On Heroku, the standard output (blue) still works up til around 1 mio. rows, but the serverside output (yellow) crashed at 100 mio. rows. From the logs, I could see that the dyno ran out of memory, i.e. the limit can probably be pushed (much) further by purchasing a more beefy dyno. In the head-to-head comparison, the serverside output callback is still faster, but the performance gain has been reduced to a factor of around 10 for small data frames, and 100 for large ones.
 
+It should be noted that the performance gains reported here apply only to operations where server side caching is relevant (e.g. sharing of data between callbacks). Hence, you shouldn't generally expect your app to become 100 times faster by using the `ServersideOutputTransform`. In fact, if the performance bottleneck in your app is elsewhere (e.g. rendering of large figures), it might not become faster at all.

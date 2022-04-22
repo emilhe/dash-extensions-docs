@@ -8,25 +8,22 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "^3.9"
 dash = "2.3.1"
-dash-extensions = "0.1.0rc10"
+dash-extensions = "0.1.0"
 dash-mantine-components = "^0.7.0"
-dash-iconify = "^0.1.0"
+dash-iconify = "^0.1.2"
 dash-labs = "^1.0.3"
 mistune = "^2.0.2"
 mistletoe = "^0.8.2"
 pytest = "^7.1.1"
 coverage = "^6.3.2"
-dash-down = "0.0.13rc7"
+dash-down = "0.1.0"
 uvicorn = "^0.17.6"
 starlette = "^0.19.0"
 sse-starlette = "^0.10.3"
 pandas = "^1.4.2"
 XlsxWriter = "^3.0.3"
 kaleido = "0.2.1"
-
-[tool.poetry.dev-dependencies]
 quart = "^0.17.0"
-
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

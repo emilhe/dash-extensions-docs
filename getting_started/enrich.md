@@ -7,7 +7,7 @@ from dash import Input, Output, html, ...  # before
 from dash_extensions.enrich import Input, Output, html, ...  # after
 ```
 
-and exchange the `Dash` object with a `DashProxy` object with the desired transformations enabled,
+and exchange the `Dash` object with a `DashProxy` object with the desired transforms enabled,
 
 ```python
 from dash_extensions.enrich import DashProxy, TriggerTransform, MultiplexerTransform, ServersideOutputTransform, NoOutputTransform, BlockingCallbackTransform, LogTransform
@@ -22,7 +22,7 @@ app = DashProxy(transforms=[
 ])
 ```
 
-The `enrich` module also exposes a `Dash` object, which is a `DashProxy` object with all transformations loaded, i.e. a batteries included approach. However, it is recommended to load only the transforms are that actually used.
+The `enrich` module also exposes a `Dash` object, which is a `DashProxy` object with all transforms loaded, i.e. a batteries included approach. However, it is recommended to load only the transforms are that actually used.
 
 The transforms are documented in detail on separate pages (see the **Transforms** section in the menu to the right), while underlying framework is documented below. The framework documentation is not limited to technical details, but cover also practical applications of the `enrich` module functionality such as modular Dash application development, and how to get started developing your own transforms. Hence, to get the most of the `enrich` module, it is recommended to keep reading.
 
@@ -56,7 +56,7 @@ The `DashProxy` object is a thin wrapper around `DashBlueprint` that turns it in
 
 .. python-code:: getting_started.dash_proxy
 
-Like the (raw) `DashBlueprint` object, the `DashProxy` object supports [transformations](#a-dashtransform).
+Like the (raw) `DashBlueprint` object, the `DashProxy` object supports [transforms](#a-dashtransform).
 
 #### Embedding
 
@@ -76,7 +76,7 @@ Note that because the pages are registered with different values for the `prefix
 
 ### DashTransform
 
-A `DashTransform` represents a _transformation_ of one `DashBlueprint` into another. Since a blueprint holds both callback and layout information, transforms can make arbitrary modifications of both. Transforms can be passed via the `transforms` keyword of `DashBlueprint` and/or `DashProxy`. The key purpose of transforms is to make it possibly to encapsulate blocks of application logic, and abstract it away. 
+A `DashTransform` represents a _transformation_ of one `DashBlueprint` into another. Since a blueprint holds both callback and layout information, transforms can make arbitrary modifications of both. Transforms can be passed via the `transforms` keyword of `DashBlueprint` and/or `DashProxy`. The key purpose of transforms is to make it possible to encapsulate blocks of application logic, and abstract it away. 
 
 As a simple example, let's consider the case of callbacks that are invoked only for their side effects. A typical example is executing a small JavaScript snippet. In Dash, a callback _must_ have an output, so the workaround for this case would be to add a dummy output,
 

@@ -49,3 +49,8 @@ html {
   margin-right: auto;
   width: 50%;
 }
+
+.markdown-body img {
+  margin-top: 0;
+  margin-bottom: 16px;
+}

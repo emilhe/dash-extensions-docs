@@ -4,7 +4,7 @@ import dash_mantine_components as dmc
 from dash import html, dcc
 from dash_down.express import md_to_blueprint_dmc
 
-desc = "Dash Extensions is a collection of utilities functions, syntax extensions, and Dash components that aim to " \
+desc = "Dash Extensions is a collection of utility functions, syntax extensions, and Dash components that aim to " \
        "improve the Dash development experience"
 dash.register_page(
     __name__,
