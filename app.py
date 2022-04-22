@@ -5,7 +5,7 @@ from dash_extensions.snippets import fix_page_load_anchor_issue
 from utils.markdown import register_pages
 from utils.ui import app_shell
 
-app = DashProxy(plugins=[dl.plugins.pages], external_stylesheets=[GITHUB_MARKDOWN_CSS_LIGHT])
+app = DashProxy(__name__, plugins=[dl.plugins.pages], external_stylesheets=[GITHUB_MARKDOWN_CSS_LIGHT])
 # Register component blueprints.
 register_pages(app, "getting_started", order_map=dict(installation=0, javascript=1, enrich=2))
 register_pages(app, "transforms", order=10)
