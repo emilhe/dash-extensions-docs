@@ -6,7 +6,7 @@ authors = ["emher <emil.h.eriksen@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = ">=3.7"
+python = ">=3.7,<4.0"
 dash = "2.3.1"
 dash-extensions = "0.1.0"
 dash-mantine-components = "^0.7.0"
