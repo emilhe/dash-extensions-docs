@@ -12,7 +12,7 @@ or if you are using [Poetry](https://python-poetry.org),
 poetry add dash-extensions
 ```
 
-or if your environment is managed by `conda`,
+or if your environment is managed by [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/packages.html),
 
 ```bash
 mamba install -c conda-forge dash-extensions
