@@ -11,7 +11,7 @@ register_pages(app, "getting_started", order_map=dict(installation=0, javascript
 register_pages(app, "transforms", order=10)
 register_pages(app, "components", order=20)
 # Bind layout.
-app.layout = app_shell([dl.plugins.page_container] + fix_page_load_anchor_issue(app, 400))
+app.layout = app_shell([dl.plugins.page_container] + fix_page_load_anchor_issue(app, 500))
 # Enable search bar.
 app.clientside_callback(
     """
