@@ -101,7 +101,7 @@ toml = ["tomli"]
 
 [[package]]
 name = "dash"
-version = "2.6.0"
+version = "2.5.1"
 description = "A Python framework for building reactive web-apps. Developed by Plotly."
 category = "main"
 optional = false
@@ -120,7 +120,7 @@ celery = ["redis (>=3.5.3)", "celery[redis] (>=5.1.2)"]
 ci = ["dash-flow-example (==0.0.5)", "dash-dangerously-set-inner-html", "flake8 (==3.9.2)", "flaky (==3.7.0)", "flask-talisman (==1.0.0)", "mimesis", "mock (==4.0.3)", "numpy", "preconditions", "pylint (==2.13.5)", "pytest-mock", "pytest-sugar (==0.9.4)", "pytest-rerunfailures", "black (==21.6b0)", "isort (==4.3.21)", "orjson (==3.5.4)", "pyarrow (<3)", "pandas (==1.1.5)", "xlrd (<2)", "black (==22.3.0)", "orjson (==3.6.7)", "pyarrow", "openpyxl", "pandas (>=1.4.0)", "xlrd (>=2.0.1)"]
 dev = ["coloredlogs (>=15.0.1)", "fire (>=0.4.0)", "PyYAML (>=5.4.1)"]
 diskcache = ["diskcache (>=5.2.1)", "multiprocess (>=0.70.12)", "psutil (>=5.8.0)"]
-testing = ["beautifulsoup4 (>=4.8.2)", "lxml (>=4.6.2)", "percy (>=2.0.2)", "pytest (>=6.0.2)", "requests[security] (>=2.21.0)", "selenium (>=3.141.0,<=4.2.0)", "waitress (>=1.4.4)", "cryptography (<3.4)"]
+testing = ["beautifulsoup4 (>=4.8.2)", "lxml (>=4.6.2)", "percy (>=2.0.2)", "pytest (>=6.0.2)", "requests[security] (>=2.21.0)", "selenium (>=3.141.0)", "waitress (>=1.4.4)", "cryptography (<3.4)"]
 
 [[package]]
 name = "dash-core-components"
@@ -132,15 +132,15 @@ python-versions = "*"
 
 [[package]]
 name = "dash-down"
-version = "0.1.1rc3"
+version = "0.1.1"
 description = ""
 category = "main"
 optional = false
 python-versions = ">=3.7,<4.0"
 
 [package.dependencies]
-dash = ">=2.6.0"
-dash-extensions = ">=0.1.4"
+dash = ">=2.5.0"
+dash-extensions = ">=0.1.5"
 dash-iconify = ">=0.1.2,<0.2.0"
 dash-mantine-components = ">=0.7.0"
 mistune = "2.0.4"
@@ -148,14 +148,14 @@ python-box = ">=6.0.1,<7.0.0"
 
 [[package]]
 name = "dash-extensions"
-version = "0.1.5rc5"
+version = "0.1.5"
 description = "Extensions for Plotly Dash."
 category = "main"
 optional = false
 python-versions = ">=3.7,<4"
 
 [package.dependencies]
-dash = ">=2.6.0"
+dash = ">=2.5.0"
 Flask-Caching = "2.0.0"
 jsbeautifier = ">=1.14.3,<2.0.0"
 more-itertools = ">=8.12.0,<9.0.0"
@@ -715,7 +715,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9,<4.0"
-content-hash = "8796b2a65446dd6830c6e5863ae796152b460c9eddb3513fca53f68c77590f0e"
+content-hash = "c9bfa3b23675fee344b3a095321ac243d8e9beb73e8f0bc333e35787010b6950"
 
 [metadata.files]
 aiofiles = [
@@ -856,20 +856,20 @@ coverage = [
     {file = "coverage-6.4.2.tar.gz", hash = "sha256:6c3ccfe89c36f3e5b9837b9ee507472310164f352c9fe332120b764c9d60adbe"},
 ]
 dash = [
-    {file = "dash-2.6.0-py3-none-any.whl", hash = "sha256:0fda138856f699929350ed91851797a3b031aed014018a73fa13bfe10ba8ccb0"},
-    {file = "dash-2.6.0.tar.gz", hash = "sha256:a4246f9f8bbd666470eec865302bcd8c2caf8c5f40a07c904db0d57f0927f34f"},
+    {file = "dash-2.5.1-py3-none-any.whl", hash = "sha256:1b9110bcde7559a8405095901d4f7cfcfd18054b0c9758ec8562b3977824fbfe"},
+    {file = "dash-2.5.1.tar.gz", hash = "sha256:343c802006abcaf71aadd8c3f55737ea7c72116e62fff465e980f9f1f304f1ee"},
 ]
 dash-core-components = [
     {file = "dash_core_components-2.0.0-py3-none-any.whl", hash = "sha256:52b8e8cce13b18d0802ee3acbc5e888cb1248a04968f962d63d070400af2e346"},
     {file = "dash_core_components-2.0.0.tar.gz", hash = "sha256:c6733874af975e552f95a1398a16c2ee7df14ce43fa60bb3718a3c6e0b63ffee"},
 ]
 dash-down = [
-    {file = "dash-down-0.1.1rc3.tar.gz", hash = "sha256:cbf255106cab381179e72be304e42788b1ba4b0da1f1eae2a98bae75d23c96cb"},
-    {file = "dash_down-0.1.1rc3-py3-none-any.whl", hash = "sha256:27d2e8dfb1dabcafc7072f191174aae05a2575f7a4eaf5b208444bf9dc7e2dc4"},
+    {file = "dash-down-0.1.1.tar.gz", hash = "sha256:6f5bb7c0d60edd879d0dc943d76601b2adedac28319ec65f7d68036f87bbf6f6"},
+    {file = "dash_down-0.1.1-py3-none-any.whl", hash = "sha256:bd3b9f002b4034bfa83723f0ee2c811de614eb809779955bf9a00e28bbc16d40"},
 ]
 dash-extensions = [
-    {file = "dash-extensions-0.1.5rc5.tar.gz", hash = "sha256:fa9510091d79b7a82c03042cc147d078c75747786d0fd86d82a994ff52aea707"},
-    {file = "dash_extensions-0.1.5rc5-py3-none-any.whl", hash = "sha256:ad4adf369283df7aadd4a0315d1ad5c74c788edd06bbb64bf4c1189c8f7dce30"},
+    {file = "dash-extensions-0.1.5.tar.gz", hash = "sha256:8b5cdfe4471305d22b79f04e95dd366da20f9fcc129f5c9ac6c5f0dfd3c889fe"},
+    {file = "dash_extensions-0.1.5-py3-none-any.whl", hash = "sha256:fd597e43986dba48e0e5dd1028f12a954a992afcc86fdada6865a2dae803ec42"},
 ]
 dash-html-components = [
     {file = "dash_html_components-2.0.0-py3-none-any.whl", hash = "sha256:b42cc903713c9706af03b3f2548bda4be7307a7cf89b7d6eae3da872717d1b63"},

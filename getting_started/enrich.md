@@ -24,7 +24,7 @@ app = DashProxy(transforms=[
 
 The `enrich` module also exposes a `Dash` object, which is a `DashProxy` object with all transforms loaded, i.e. a batteries included approach. However, it is recommended to load only the transforms are that actually used.
 
-The transforms are documented in detail on separate pages (see the **Transforms** section in the menu to the right), while underlying framework is documented below. The framework documentation is not limited to technical details, but cover also practical applications of the `enrich` module functionality such as modular Dash application development, and how to get started developing your own transforms. Hence, to get the most of the `enrich` module, it is recommended to keep reading.
+The transforms are documented in detail on separate pages (see the **Transforms** section in the menu to the right), while underlying framework is documented below. The framework documentation is not limited to technical details. It covers also practical applications of the `enrich` module functionality, such as modular Dash application development, and how to get started developing your own transforms. Hence, to get the most of the `enrich` module, it is recommended to keep reading.
 
 ### DashBlueprint
 
@@ -46,9 +46,9 @@ Since blueprints do not reference the Dash application object, they can be defin
 
 * Turning it into a Dash application via the [`DashProxy` object](#a-dashproxy)
 * [Embedding](#a-embedding) it in an existing Dash application
-* Registering it [as a page](#a-pages) in an existing Dash application using the [pages plugin](https://github.com/plotly/dash-labs)
+* Registering it [as a page](#a-pages) in an existing Dash application using [pages](https://dash.plotly.com/urls)
 
-To avoid id collisions between blueprints, _id prefixing_ is supported via the `PrefixIdTransform`. Hence it is possible to use blueprints with the same ids in the same application; or even use the same blueprint multiple times.
+To avoid id collisions between blueprints, _id prefixing_ is supported via the `PrefixIdTransform`. Hence, it is possible to use blueprints with the same ids in the same application; or even use the same blueprint multiple times.
 
 #### DashProxy
 
@@ -68,7 +68,7 @@ As it is possible to embed any number of blueprints, this strategy can be used t
 
 #### Pages
 
-Using the embedding approach described above, it is possible to register blueprints as separate pages in a multipage application setup, but it requires a bit of code. If you are using the [pages plugin](https://github.com/plotly/dash-labs), the process is streamlined via the `register` function,
+Using the embedding approach described above, it is possible to register blueprints as separate pages in a multipage application setup, but it requires a bit of code. If you are using the [pages](https://dash.plotly.com/urls), the process is streamlined via the `register` function,
 
 .. python-code:: getting_started.pages
 
