@@ -8,7 +8,7 @@ While this approach _works_, there are two things that I don't love about it. Fi
 
 .. dash-proxy:: transforms.operator_log
 
-Since the callback returns an _operation_, all element are _not_ exchanged between client and server. **Only the new element is sent from the server to the client**. Under the hood, a clientside callback is used to perform to append the log entry to the list. Hence, if the data is large, the `OperatorTransform` might enable (significant) performance improvements.
+Since the callback returns an _operation_, all element are _not_ exchanged between client and server. **Only the new element is sent from the server to the client**. Hence, if the data is large, the `OperatorTransform` may enable (significant) performance improvements.
 
 ### Nested data structures
 
@@ -24,7 +24,7 @@ In the previous example, only a single operation was performed. It is also possi
 
 ### How does it work?
 
-Under the hood, a client side callback performs the desired operation of the targeted component property. Hence, there is only a possible performance benefit for normal callbacks, not clientside callbacks.
+Under the hood, a client side callback performs the desired operation of the targeted component property. Hence, there is only a potential performance benefit for normal callbacks, not clientside callbacks.
 
 ### Benchmarks
 
