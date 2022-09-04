@@ -46,7 +46,7 @@ layout = html.Div(
                                 [
                                     dmc.Button("Get Started"),
                                 ],
-                                href="/getting-started/installation",
+                                href="/pages/getting-started/installation",
                             ),
                         ],
                     )
