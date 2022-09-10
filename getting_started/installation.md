@@ -12,13 +12,6 @@ or if you are using [Poetry](https://python-poetry.org),
 poetry add dash-extensions
 ```
 
-or if your environment is managed by [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/packages.html),
-
-```bash
-mamba install -c conda-forge dash-extensions
-conda install -c conda-forge dash-extensions
-```
-
 ### Example
 
 It should now be possible to run the following (minimal) example app,
