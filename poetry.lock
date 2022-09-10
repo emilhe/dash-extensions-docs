@@ -101,7 +101,7 @@ toml = ["tomli"]
 
 [[package]]
 name = "dash"
-version = "2.5.1"
+version = "2.6.1"
 description = "A Python framework for building reactive web-apps. Developed by Plotly."
 category = "main"
 optional = false
@@ -120,7 +120,7 @@ celery = ["redis (>=3.5.3)", "celery[redis] (>=5.1.2)"]
 ci = ["dash-flow-example (==0.0.5)", "dash-dangerously-set-inner-html", "flake8 (==3.9.2)", "flaky (==3.7.0)", "flask-talisman (==1.0.0)", "mimesis", "mock (==4.0.3)", "numpy", "preconditions", "pylint (==2.13.5)", "pytest-mock", "pytest-sugar (==0.9.4)", "pytest-rerunfailures", "black (==21.6b0)", "isort (==4.3.21)", "orjson (==3.5.4)", "pyarrow (<3)", "pandas (==1.1.5)", "xlrd (<2)", "black (==22.3.0)", "orjson (==3.6.7)", "pyarrow", "openpyxl", "pandas (>=1.4.0)", "xlrd (>=2.0.1)"]
 dev = ["coloredlogs (>=15.0.1)", "fire (>=0.4.0)", "PyYAML (>=5.4.1)"]
 diskcache = ["diskcache (>=5.2.1)", "multiprocess (>=0.70.12)", "psutil (>=5.8.0)"]
-testing = ["beautifulsoup4 (>=4.8.2)", "lxml (>=4.6.2)", "percy (>=2.0.2)", "pytest (>=6.0.2)", "requests[security] (>=2.21.0)", "selenium (>=3.141.0)", "waitress (>=1.4.4)", "cryptography (<3.4)"]
+testing = ["beautifulsoup4 (>=4.8.2)", "lxml (>=4.6.2)", "percy (>=2.0.2)", "pytest (>=6.0.2)", "requests[security] (>=2.21.0)", "selenium (>=3.141.0,<=4.2.0)", "waitress (>=1.4.4)", "cryptography (<3.4)"]
 
 [[package]]
 name = "dash-core-components"
@@ -148,14 +148,14 @@ python-box = ">=6.0.1,<7.0.0"
 
 [[package]]
 name = "dash-extensions"
-version = "0.1.5"
+version = "0.1.6"
 description = "Extensions for Plotly Dash."
 category = "main"
 optional = false
 python-versions = ">=3.7,<4"
 
 [package.dependencies]
-dash = ">=2.5.0"
+dash = ">=2.6.1"
 Flask-Caching = "2.0.0"
 jsbeautifier = ">=1.14.3,<2.0.0"
 more-itertools = ">=8.12.0,<9.0.0"
@@ -732,7 +732,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9,<4.0"
-content-hash = "c9bfa3b23675fee344b3a095321ac243d8e9beb73e8f0bc333e35787010b6950"
+content-hash = "e87a67c2f44141b764af0e6e33b63baca2dcde7187060d2a585e317930b647c0"
 
 [metadata.files]
 aiofiles = [
@@ -873,8 +873,8 @@ coverage = [
     {file = "coverage-6.4.2.tar.gz", hash = "sha256:6c3ccfe89c36f3e5b9837b9ee507472310164f352c9fe332120b764c9d60adbe"},
 ]
 dash = [
-    {file = "dash-2.5.1-py3-none-any.whl", hash = "sha256:1b9110bcde7559a8405095901d4f7cfcfd18054b0c9758ec8562b3977824fbfe"},
-    {file = "dash-2.5.1.tar.gz", hash = "sha256:343c802006abcaf71aadd8c3f55737ea7c72116e62fff465e980f9f1f304f1ee"},
+    {file = "dash-2.6.1-py3-none-any.whl", hash = "sha256:911c0d5ef017e3c2ff2e756a01fb9388f2a80ed6084a5beaac812fb436192f90"},
+    {file = "dash-2.6.1.tar.gz", hash = "sha256:8c88375a7335419b685e336dad7fbee567e9a2fe1fcf15632b73747db3921643"},
 ]
 dash-core-components = [
     {file = "dash_core_components-2.0.0-py3-none-any.whl", hash = "sha256:52b8e8cce13b18d0802ee3acbc5e888cb1248a04968f962d63d070400af2e346"},
@@ -885,8 +885,8 @@ dash-down = [
     {file = "dash_down-0.1.1-py3-none-any.whl", hash = "sha256:bd3b9f002b4034bfa83723f0ee2c811de614eb809779955bf9a00e28bbc16d40"},
 ]
 dash-extensions = [
-    {file = "dash-extensions-0.1.5.tar.gz", hash = "sha256:8b5cdfe4471305d22b79f04e95dd366da20f9fcc129f5c9ac6c5f0dfd3c889fe"},
-    {file = "dash_extensions-0.1.5-py3-none-any.whl", hash = "sha256:fd597e43986dba48e0e5dd1028f12a954a992afcc86fdada6865a2dae803ec42"},
+    {file = "dash-extensions-0.1.6.tar.gz", hash = "sha256:6dbbe95c719b30474ea60fdc10086c74ea7d01ef3685178594eb4c43845edb71"},
+    {file = "dash_extensions-0.1.6-py3-none-any.whl", hash = "sha256:239c9f1947d679208ee871dbac593028e86375d3187e2d7341e356361d773d84"},
 ]
 dash-html-components = [
     {file = "dash_html_components-2.0.0-py3-none-any.whl", hash = "sha256:b42cc903713c9706af03b3f2548bda4be7307a7cf89b7d6eae3da872717d1b63"},
@@ -948,7 +948,10 @@ idna = [
     {file = "idna-3.3-py3-none-any.whl", hash = "sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff"},
     {file = "idna-3.3.tar.gz", hash = "sha256:9d643ff0a55b762d5cdb124b8eaa99c66322e2157b69160bc32796e824360e6d"},
 ]
-importlib-metadata = []
+importlib-metadata = [
+    {file = "importlib_metadata-4.12.0-py3-none-any.whl", hash = "sha256:7401a975809ea1fdc658c3aa4f78cc2195a0e019c5cbc4c06122884e9ae80c23"},
+    {file = "importlib_metadata-4.12.0.tar.gz", hash = "sha256:637245b8bab2b6502fcbc752cc4b7a6f6243bb02b31c5c26156ad103d3d45670"},
+]
 iniconfig = [
     {file = "iniconfig-1.1.1-py2.py3-none-any.whl", hash = "sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3"},
     {file = "iniconfig-1.1.1.tar.gz", hash = "sha256:bc3af051d7d14b2ee5ef9969666def0cd1a000e121eaea580d4a313df4b37f32"},
@@ -1089,7 +1092,10 @@ py = [
     {file = "py-1.11.0-py2.py3-none-any.whl", hash = "sha256:607c53218732647dff4acdfcd50cb62615cedf612e72d1724fb1a0cc6405b378"},
     {file = "py-1.11.0.tar.gz", hash = "sha256:51c75c4126074b472f746a24399ad32f6053d1b34b68d2fa41e558e6f4a98719"},
 ]
-pyparsing = []
+pyparsing = [
+    {file = "pyparsing-3.0.9-py3-none-any.whl", hash = "sha256:5026bae9a10eeaefb61dab2f09052b9f4307d44aee4eda64b309723d8d206bbc"},
+    {file = "pyparsing-3.0.9.tar.gz", hash = "sha256:2b020ecf7d21b687f219b71ecad3631f644a47f01403fa1d1036b0c6416d70fb"},
+]
 pytest = [
     {file = "pytest-7.1.2-py3-none-any.whl", hash = "sha256:13d0e3ccfc2b6e26be000cb6568c832ba67ba32e719443bfe725814d3c42433c"},
     {file = "pytest-7.1.2.tar.gz", hash = "sha256:a06a0425453864a270bc45e71f783330a7428defb4230fb5e6a731fde06ecd45"},
@@ -1174,4 +1180,7 @@ xlsxwriter = [
     {file = "XlsxWriter-3.0.3-py3-none-any.whl", hash = "sha256:df0aefe5137478d206847eccf9f114715e42aaea077e6a48d0e8a2152e983010"},
     {file = "XlsxWriter-3.0.3.tar.gz", hash = "sha256:e89f4a1d2fa2c9ea15cde77de95cd3fd8b0345d0efb3964623f395c8c4988b7f"},
 ]
-zipp = []
+zipp = [
+    {file = "zipp-3.8.1-py3-none-any.whl", hash = "sha256:47c40d7fe183a6f21403a199b3e4192cca5774656965b0a4988ad2f8feb5f009"},
+    {file = "zipp-3.8.1.tar.gz", hash = "sha256:05b45f1ee8f807d0cc928485ca40a07cb491cf092ff587c0df9cb1fd154848d2"},
+]
