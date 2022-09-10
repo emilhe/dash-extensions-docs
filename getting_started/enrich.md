@@ -93,7 +93,18 @@ The steps above defines a _transformation_ of one `DashBlueprint` into another, 
 
 .. python-code:: getting_started.side_effect_transform
 
+### CeleryManager
+
+For the `CeleryManager` (used with [background callbacks]((https://dash.plotly.com/background-callbacks))) to pickup background callbacks, an explicit registration of callbacks must be performed. This can be done by adding the following line,
+
+    app.register_celery_tasks()
+
+at the end of the main application file (where `app` is the `DashProxy` object). Additionally, the Celery worker process must be started manually in a separate process. This can be done by invoking the following command in a separate terminal,
+
+     celery -A my_app.celery_app worker
+
+where `my_app` is the name of the main application file, and `celery_app` is the variable name of the Celery app within that file.
+
 ### Known limitations
 
-* Transforms are not (yet) compatible the `long_callback` decorator
-
+* Transforms do not support the (deprecated) `long_callback` decorator, but the newer syntax using the standard `callback` decorator with keyword argument `background=True` is supported from version 0.1.6, see [the official docs](https://dash.plotly.com/background-callbacks) for details
