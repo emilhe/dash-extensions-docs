@@ -21,6 +21,10 @@ proxy_wrapper_map = {Output("log0", "children"): lambda proxy: dcc.Loading(proxy
 app = DashProxy(transforms=[MultiplexerTransform(proxy_wrapper_map)])
 ```
 
+### Priority
+
+In some cases, multiple callbacks (say, A and B) can update the same output (C) as part of the same update cycle. In this case it is ambiguous if C should be populated by output from A or B. If you are not happy with the default choice made by the `MultiplexerTransform` (which is deterministic, but depends on the callback ordering in the Dash callback context), you can pass a `priority` keyword argument to a callback. The callback with the highest priority will be used to populate the output, with the default priority set to 0. Hence, if you pass `priority=1` to callback A, it is guaranteed that C will be populated by the output from A (and not B).
+
 ### Know limitations
 
 The `MultiplexerTransform` does not support the `MATCH` and `ALLSMALLER` wildcards. The `MultiplexerTransform` does not support `ServersideOutput`.
