@@ -19,7 +19,7 @@ layout = dmc.Stack(
                 dmc.Anchor(
                     "here",
                     underline=False,
-                    href="https://github.com/emilhe/dash-extension/issues/new",
+                    href="https://github.com/thedirtyfew/dash-extensions/issues/new",
                 ),
                 ".",
             ]

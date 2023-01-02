@@ -1,13 +1,13 @@
+import dash_extensions
 import dash_mantine_components as dmc
 from collections import defaultdict
-from dash_extensions.enrich import dcc, html, page_container
 from dash_iconify import DashIconify
-from dash_extensions.enrich import clientside_callback, Output, Input, State
+from dash_extensions.enrich import dcc, html, page_container, clientside_callback, Output, Input, State
 
 IGNORE_SECTIONS = ["Getting Started", "Pages"]
-
-HOME = "Dash Extensions"
+HOME = f"Dash Extensions"
 HOME_SHORT = "DE"
+BADGE = dash_extensions.__version__
 GITHUB_URL = "https://github.com/thedirtyfew/dash-extensions"
 NAVBAR_ICONS = {
     "Components": "radix-icons:component-1",
@@ -18,12 +18,16 @@ NAVBAR_ICONS = {
 # region Sourced from dmc docs: https://github.com/snehilvj/dmc-docs/blob/main/lib/appshell.py
 
 def create_home_link(label):
-    return dmc.Anchor(
+    return dmc.Group([dmc.Anchor(
         label,
         size="xl",
         href="/",
         underline=False,
-    )
+    ), dmc.Badge(
+        BADGE,
+        variant="outline",
+        radius="xl",
+    )])
 
 
 def create_main_nav_link(icon, label, href):

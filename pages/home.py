@@ -1,8 +1,12 @@
+from os import environ
+
 import dash
 import dash_mantine_components as dmc
+import requests
 
 from dash import html, dcc
 from dash_down.express import md_to_blueprint_dmc
+from dash_iconify import DashIconify
 
 from utils.ui import create_table_of_contents
 
@@ -15,18 +19,34 @@ dash.register_page(
     description=desc,
 )
 
-content = md_to_blueprint_dmc("pages/home.md").layout
-footer = dmc.Center(
-    [
-        dmc.Group(
-            spacing="xs",
-            children=[
-                dmc.Text("Made by Emil Haldrup Eriksen"),
-            ],
-        )
-    ]
-)
 
+def create_title(title, id):
+    return dmc.Text(title, align="center", style={"fontSize": 30}, id=id)
+
+
+def create_head(text):
+    return dmc.Text(text, align="center", my=10, mx=0)
+
+
+def create_contributors_avatars():
+    resp = requests.get(
+        "https://api.github.com/repos/thedirtyfew/dash-extensions/contributors",
+        headers={"authorization": f"token {environ['CONTRIB_TOKEN']}"},
+    )
+    contributors = resp.json()
+    children = []
+    for user in contributors:
+        avatar = dmc.Tooltip(
+            dmc.Anchor(dmc.Avatar(src=user["avatar_url"]), href=user["html_url"]),
+            label=user["login"],
+            position="bottom",
+        )
+        children.append(avatar)
+
+    return dmc.Group(children, position="center", id="contributors")
+
+
+content = md_to_blueprint_dmc("pages/home.md").layout
 layout = html.Div(
     [
         dmc.Container(
@@ -46,12 +66,12 @@ layout = html.Div(
                             ],
                             style={"width": 600},
                         ),
-                        dcc.Link(
-                            [
-                                dmc.Button("Get Started"),
-                            ],
-                            href="/getting-started/installation",
-                        ),
+                        # dcc.Link(
+                        #     [
+                        #         dmc.Button("Let"),
+                        #     ],
+                        #     href="/getting-started/installation",
+                        # ),
                     ],
                 )
             ],
@@ -63,10 +83,22 @@ layout = html.Div(
         dmc.Space(h=16),
         html.Div(dmc.Divider(), style=dict(width="100%")),
         dmc.Space(h=16),
-        footer,
+        # create_title("Contributors", id="contributors"),
+        (create_contributors_avatars() if "CONTRIB_TOKEN" in environ else None),
+        dmc.Space(h=16),
+        html.Div(dmc.Divider(), style=dict(width="100%")),
+        dmc.Space(h=16),
+        dmc.Center(
+            dmc.Group(
+                spacing="xs",
+                children=[
+                    dmc.Text("Made with"),
+                    DashIconify(icon="akar-icons:heart", width=19, color="red"),
+                    dmc.Text("by Emil Haldrup Eriksen"),
+                ],
+            )),
         create_table_of_contents([
-                ("#features", "Features", ""),
-                ("#contributors", "Contributors", ""),
-            ])
+            ("#contributors", "Contributors", ""),
+        ])
     ]
 )
