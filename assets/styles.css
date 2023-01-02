@@ -3,10 +3,10 @@ html {
     scroll-padding-top: 90px
 }
 
-#main-content {
-    margin-right: 300px;
-    margin-left: 300px;
-    max-width: 100%;
+#wrapper {
+    padding: 10px;
+    margin-left: 320px;
+    margin-right: 320px;
 }
 
 @media only screen and (max-width: 1500px) {
@@ -14,7 +14,7 @@ html {
         display: none;
     }
 
-    #main-content {
+    #wrapper {
         margin-right: 0;
     }
 }
@@ -24,7 +24,7 @@ html {
         display: none;
     }
 
-    #main-content {
+    #wrapper {
         margin-left: 0;
     }
 }
