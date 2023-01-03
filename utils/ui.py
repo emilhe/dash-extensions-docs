@@ -18,16 +18,12 @@ NAVBAR_ICONS = {
 # region Sourced from dmc docs: https://github.com/snehilvj/dmc-docs/blob/main/lib/appshell.py
 
 def create_home_link(label):
-    return dmc.Group([dmc.Anchor(
+    return dmc.Anchor(
         label,
         size="xl",
         href="/",
         underline=False,
-    ), dmc.Badge(
-        BADGE,
-        variant="outline",
-        radius="xl",
-    )])
+    )
 
 
 def create_main_nav_link(icon, label, href):
@@ -76,7 +72,12 @@ def create_header(nav_data):
                         dmc.Col(
                             [
                                 dmc.MediaQuery(
-                                    create_home_link(HOME),
+                                    dmc.Group([
+                                        create_home_link(HOME), dmc.Badge(
+                                            BADGE,
+                                            variant="outline",
+                                            radius="xl",
+                                        )]),
                                     smallerThan="lg",
                                     styles={"display": "none"},
                                 ),
@@ -95,37 +96,38 @@ def create_header(nav_data):
                                 position="right",
                                 spacing="xl",
                                 children=[
+                                    dmc.Select(
+                                        id="select-component",
+                                        style={"width": 250},
+                                        placeholder="Search",
+                                        nothingFound="No match found",
+                                        searchable=True,
+                                        clearable=True,
+                                        data=[
+                                            {
+                                                "label": component["name"],
+                                                "value": component["path"],
+                                            }
+                                            for component in nav_data
+                                            if component["name"]
+                                               not in ["Home", "Not found 404"]
+                                        ],
+                                        icon=DashIconify(
+                                            icon="radix-icons:magnifying-glass"
+                                        ),
+                                    ),
                                     dmc.MediaQuery(
-                                        dmc.Select(
-                                            id="select-component",
-                                            style={"width": 250},
-                                            placeholder="Search",
-                                            nothingFound="No match found",
-                                            searchable=True,
-                                            clearable=True,
-                                            data=[
-                                                {
-                                                    "label": component["name"],
-                                                    "value": component["path"],
-                                                }
-                                                for component in nav_data
-                                                if component["name"]
-                                                   not in ["Home", "Not found 404"]
-                                            ],
-                                            icon=DashIconify(
-                                                icon="radix-icons:magnifying-glass"
-                                            ),
+                                        create_header_link(
+                                            "radix-icons:github-logo",
+                                            GITHUB_URL,
                                         ),
                                         smallerThan="md",
                                         styles={"display": "none"},
                                     ),
-                                    create_header_link(
-                                        "radix-icons:github-logo",
-                                        GITHUB_URL,
-                                    ),
                                     # create_header_link(
                                     #     "bi:discord", "https://discord.gg/KuJkh4Pyq5"
                                     # ),
+                                    # dmc.MediaQuery(
                                     dmc.ActionIcon(
                                         DashIconify(
                                             icon="radix-icons:blending-mode", width=22
@@ -136,6 +138,9 @@ def create_header(nav_data):
                                         color="yellow",
                                         id="color-scheme-toggle",
                                     ),
+                                    #     smallerThan="md",
+                                    #     styles={"display": "none"},
+                                    # ),
                                     dmc.MediaQuery(
                                         dmc.ActionIcon(
                                             DashIconify(
