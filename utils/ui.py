@@ -78,12 +78,12 @@ def create_header(nav_data):
                                             variant="outline",
                                             radius="xl",
                                         )]),
-                                    smallerThan="lg",
+                                    smallerThan="sm",
                                     styles={"display": "none"},
                                 ),
                                 dmc.MediaQuery(
                                     create_home_link(HOME_SHORT),
-                                    largerThan="lg",
+                                    largerThan="sm",
                                     styles={"display": "none"},
                                 ),
                             ],
@@ -94,11 +94,11 @@ def create_header(nav_data):
                             span="auto",
                             children=dmc.Group(
                                 position="right",
-                                spacing="xl",
+                                # spacing="xl",
                                 children=[
                                     dmc.Select(
                                         id="select-component",
-                                        style={"width": 250},
+                                        style={"width": 200},
                                         placeholder="Search",
                                         nothingFound="No match found",
                                         searchable=True,
@@ -121,13 +121,9 @@ def create_header(nav_data):
                                             "radix-icons:github-logo",
                                             GITHUB_URL,
                                         ),
-                                        smallerThan="md",
+                                        smallerThan="sm",
                                         styles={"display": "none"},
                                     ),
-                                    # create_header_link(
-                                    #     "bi:discord", "https://discord.gg/KuJkh4Pyq5"
-                                    # ),
-                                    # dmc.MediaQuery(
                                     dmc.ActionIcon(
                                         DashIconify(
                                             icon="radix-icons:blending-mode", width=22
@@ -138,22 +134,23 @@ def create_header(nav_data):
                                         color="yellow",
                                         id="color-scheme-toggle",
                                     ),
-                                    #     smallerThan="md",
-                                    #     styles={"display": "none"},
-                                    # ),
                                     dmc.MediaQuery(
-                                        dmc.ActionIcon(
-                                            DashIconify(
-                                                icon="radix-icons:hamburger-menu",
-                                                width=18,
+                                        dmc.MediaQuery(
+                                            dmc.ActionIcon(
+                                                DashIconify(
+                                                    icon="radix-icons:hamburger-menu",
+                                                    width=18,
+                                                ),
+                                                id="drawer-hamburger-button",
+                                                variant="outline",
+                                                size=36,
                                             ),
-                                            id="drawer-hamburger-button",
-                                            variant="outline",
-                                            size=36,
+                                            largerThan="lg",
+                                            styles={"display": "none"},
                                         ),
-                                        largerThan="lg",
+                                        smallerThan="sm",
                                         styles={"display": "none"},
-                                    ),
+                                    )
                                 ],
                             ),
                         ),
