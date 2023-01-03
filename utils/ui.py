@@ -269,7 +269,7 @@ def create_table_of_contents(toc_items):
     return dmc.Aside(
         position={"top": 70, "right": 0},
         fixed=True,
-        id="toc-navbar",
+        className="toc-navbar",
         width={"base": 300},
         zIndex=10,
         children=toc,

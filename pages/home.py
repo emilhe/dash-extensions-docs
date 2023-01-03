@@ -64,7 +64,7 @@ layout = html.Div(
                                     desc, align="center",
                                 )
                             ],
-                            style={"width": 600},
+                            style={"max-width": 600},
                         ),
                         # dcc.Link(
                         #     [
