@@ -202,7 +202,7 @@ def create_side_nave_content(nav_data):
                     ),
                     section,
                 ],
-                my=20,
+                my=10,
             )
         )
         links.extend(
@@ -213,7 +213,7 @@ def create_side_nave_content(nav_data):
         )
 
     return dmc.Stack(
-        spacing="sm", children=[main_links, *links, dmc.Space(h=20)], px=25
+        spacing="sm", children=[main_links, *links], px=25
     )
 
 
@@ -342,7 +342,7 @@ def create_app_shell(nav_data, children):
             children=[
                          dcc.Store(id="theme-store", storage_type="local"),
                          dcc.Location(id="url"),
-                         dmc.NotificationsProvider(
+                         html.Div(
                              [
                                  create_header(nav_data),
                                  create_side_navbar(nav_data),

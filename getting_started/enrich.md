@@ -24,7 +24,7 @@ app = DashProxy(transforms=[
 
 The `enrich` module also exposes a `Dash` object, which is a `DashProxy` object with all transforms loaded, i.e. a batteries included approach. However, it is recommended to load only the transforms are that actually used.
 
-The transforms are documented in detail on separate pages (see the **Transforms** section in the menu to the right), while underlying framework is documented below. The framework documentation is not limited to technical details. It covers also practical applications of the `enrich` module functionality, such as modular Dash application development, and how to get started developing your own transforms. Hence, to get the most of the `enrich` module, it is recommended to keep reading.
+The transforms are documented in detail on separate pages (see the **Transforms** section in the menu to the left), while underlying framework is documented below. The framework documentation is not limited to technical details. It covers also practical applications of the `enrich` module functionality, such as modular Dash application development, and how to get started developing your own transforms. Hence, to get the most of the `enrich` module, it is recommended to keep reading.
 
 ### DashBlueprint
 
@@ -95,7 +95,7 @@ The steps above defines a _transformation_ of one `DashBlueprint` into another, 
 
 ### CeleryManager
 
-For the `CeleryManager` (used with [background callbacks]((https://dash.plotly.com/background-callbacks))) to pickup background callbacks, an explicit registration of callbacks must be performed. This can be done by adding the following line,
+For the `CeleryManager` (used with [background callbacks](https://dash.plotly.com/background-callbacks)) to pickup background callbacks, an explicit registration of callbacks must be performed. This can be done by adding the following line,
 
     app.register_celery_tasks()
 
