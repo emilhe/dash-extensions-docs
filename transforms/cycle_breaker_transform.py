@@ -4,8 +4,8 @@ from dash_extensions.enrich import DashProxy, html, Output, Input, CycleBreakerT
 
 app = DashProxy(transforms=[CycleBreakerTransform()])
 app.layout = html.Div([
-    dmc.NumberInput(id="celsius", label="Celsius"),
-    dmc.NumberInput(id="fahrenheit", label="Fahrenheit"),
+    dmc.NumberInput(id="celsius", label="Celsius", value=0),
+    dmc.NumberInput(id="fahrenheit", label="Fahrenheit", value=32),
 ])
 
 @app.callback(Output("celsius", "value"), CycleBreakerInput("fahrenheit", "value"))
