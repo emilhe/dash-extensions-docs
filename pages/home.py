@@ -36,6 +36,8 @@ def create_contributors_avatars():
     contributors = resp.json()
     children = []
     for user in contributors:
+        print(type(user))
+        print(user)
         avatar = dmc.Tooltip(
             dmc.Anchor(dmc.Avatar(src=user["avatar_url"]), href=user["html_url"]),
             label=user["login"],
