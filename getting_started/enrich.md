@@ -60,7 +60,7 @@ Like the (raw) `DashBlueprint` object, the `DashProxy` object supports [transfor
 
 #### Embedding
 
-To embed a blueprint in a Dash application, use the `register_callbacks` function to transfer the callbacks from the blueprint to the Dash app and embed the `layout` where needed,
+To embed a blueprint in a Dash application, use the `embed` function. It transfers the callbacks from the blueprint to the Dash app, and returns the resulting layout,
 
 .. python-code:: getting_started.embedding
 
