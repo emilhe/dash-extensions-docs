@@ -26,6 +26,10 @@ In the previous example, only a single operation was performed. It is also possi
 
 Under the hood, a client side callback performs the desired operation of the targeted component property. Hence, there is only a potential performance benefit for normal callbacks, not clientside callbacks.
 
+### Know limitations
+
+The `OperatorTransform` does not support [pattern matching](https://dash.plotly.com/pattern-matching-callbacks) callbacks.
+
 ### Benchmarks
 
 Benchmarks will be added here. Stay tuned :)
