@@ -150,7 +150,7 @@ python-box = ">=6.0.1,<7.0.0"
 
 [[package]]
 name = "dash-extensions"
-version = "0.1.12"
+version = "0.1.13"
 description = "Extensions for Plotly Dash."
 category = "main"
 optional = false
@@ -748,7 +748,7 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9,<4.0"
-content-hash = "dfe4454f616ddca01ca74525d643b8e7e041fac8ffe20abce3d2cf79e89f7b35"
+content-hash = "818b4658bddd3d60ce13d75370e361ec60ad7622eb7fa02ec7169ca32040a07b"
 
 [metadata.files]
 aiofiles = [
@@ -938,8 +938,8 @@ dash-down = [
     {file = "dash_down-0.1.1-py3-none-any.whl", hash = "sha256:bd3b9f002b4034bfa83723f0ee2c811de614eb809779955bf9a00e28bbc16d40"},
 ]
 dash-extensions = [
-    {file = "dash_extensions-0.1.12-py3-none-any.whl", hash = "sha256:045935ee7754e7a8b5a60ffa8488bc2ccf25f92dc6b8661ed5dc230208a54935"},
-    {file = "dash_extensions-0.1.12.tar.gz", hash = "sha256:6ada2629e8edead52671169ec93f73e1da378da62c300f476e273fbf139b8103"},
+    {file = "dash_extensions-0.1.13-py3-none-any.whl", hash = "sha256:8369db7362513896116495080b425a748e49bfa9197723d101789a86b6c88434"},
+    {file = "dash_extensions-0.1.13.tar.gz", hash = "sha256:8a8da362f83c583350517e883f88514cae0c46c6d075f39579b0fdd1750f5792"},
 ]
 dash-html-components = [
     {file = "dash_html_components-2.0.0-py3-none-any.whl", hash = "sha256:b42cc903713c9706af03b3f2548bda4be7307a7cf89b7d6eae3da872717d1b63"},
