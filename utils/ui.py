@@ -182,6 +182,11 @@ def create_side_nave_content(nav_data):
                 label="Enrich",
                 href="/getting_started/enrich",
             ),
+            create_main_nav_link(
+                icon="material-symbols:chip-extraction",
+                label="Migration",
+                href="/getting_started/migration",
+            ),
         ],
     )
     # create component links

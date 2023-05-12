@@ -1,6 +1,6 @@
 import time
 import plotly.express as px
-from dash_extensions.enrich import DashProxy, Output, Input, State, ServersideOutput, html, dcc, \
+from dash_extensions.enrich import DashProxy, Output, Input, State, Serverside, html, dcc, \
     ServersideOutputTransform
 
 app = DashProxy(transforms=[ServersideOutputTransform()])
@@ -13,10 +13,10 @@ app.layout = html.Div(
     ]
 )
 
-@app.callback(ServersideOutput("store", "data"), Input("btn", "n_clicks"), prevent_initial_call=True)
+@app.callback(Output("store", "data"), Input("btn", "n_clicks"), prevent_initial_call=True)
 def query_data(n_clicks):
     time.sleep(3)  # emulate slow database operation
-    return px.data.gapminder()  # no JSON serialization here
+    return Serverside(px.data.gapminder())  # no JSON serialization here
 
 @app.callback(Output("dd", "options"),  Output("dd", "value"), Input("store", "data"), prevent_initial_call=True)
 def update_dd(df):

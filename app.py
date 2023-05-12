@@ -6,7 +6,6 @@ from utils.ui import create_app_shell
 app = DashProxy(__name__, use_pages=True, update_title=None, suppress_callback_exceptions=True)
 # Register component blueprints.
 register_pages(app, "getting_started", order=0)
-a = page_registry.values()
 register_pages(app, "transforms", order=10)
 register_pages(app, "components", order=20)
 # Bind layout.
