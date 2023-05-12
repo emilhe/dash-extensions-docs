@@ -15,7 +15,7 @@ def generate_xlsx(n_nlicks):
     def to_xlsx(bytes_io):
         xslx_writer = pd.ExcelWriter(bytes_io, engine="xlsxwriter")  # requires the xlsxwriter package
         df.to_excel(xslx_writer, index=False, sheet_name="sheet1")
-        xslx_writer.save()
+        xslx_writer.close()
 
     return dcc.send_bytes(to_xlsx, "some_name.xlsx")
 
