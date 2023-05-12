@@ -81,6 +81,7 @@ def register_pages(app, folder, order=None, order_map=None):
     md_options = dict(directives=[python_code], shell=blueprint_shell, dash_proxy_shell=dash_proxy_shell)
     for fn in [fn for fn in os.listdir(folder) if fn.endswith(".md")]:
         name = fn.replace('.md', '')
+        print(name)
         order = order_map[name] if order_map is not None and name in order_map else order
         blueprint = md_to_blueprint_with_toc(f"{folder}/{fn}", **md_options)
         blueprint.register(app, f"{folder}.{name}", prefix=name, name=camel(name), order=order,
