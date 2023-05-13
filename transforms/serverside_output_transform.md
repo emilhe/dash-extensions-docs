@@ -1,6 +1,6 @@
 ## ServersideOutputTransform
 
-The `ServersideOutputTransform` makes it possible to use the `Serverside` component. When a callback return value is wrapped `Serverside` component, the data is _kept on the server_. By skipping the data transfer between server/client, the network overhead is reduced drastically, and the serialization to JSON can be avoided. Hence, you can now return complex objects, such as a Pandas data frame, directly. Here is a small example,
+The `ServersideOutputTransform` makes it possible to use the `Serverside` component. When a callback return value is wrapped in a `Serverside` component, the data is _kept on the server_. By skipping the data transfer between server/client, the network overhead is reduced drastically, and the serialization to JSON can be avoided. Hence, you can now return complex objects, such as a Pandas data frame, directly. Here is a small example,
 
 .. dash-proxy:: transforms.serverside_output_transform
 
