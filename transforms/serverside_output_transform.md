@@ -34,6 +34,10 @@ def get(self, key, ignore_expired=False) -> any:
 
 If `ignore_expired=True`, the function **must** return the value, even if it has been marked as expired in the cache. Some caches perform cleanup internally (e.g. Redis), in which case the timeout must be set high enough that the cache _never expires during a user session_. That's why the default timeout value for the `RedisStore` is set to 24 hours.
 
+### Keys
+
+Per default, the `Serverside` object generates a (new) unique key for every callback invocation to ensure that data is never shared between invocations and/or sessions. However, if this is not a requirement, using a fixed key will reduce the data usage of the backend significantly, as only a single copy of the data will be stored (instead of one per callback invocation).
+
 ### Backend cleanup
 
 The default `FileSystemBackend` doesn't include any clean up mechanism. Hence, the caching directory (per default `file_system_backend`) will grow in size indefinitely as the app is used. If space is an issue, it is recommended to perform scheduled cleanups outside business hours, I typically do it every night at 3 am. Other backends (e.g. Redis) performs the cleanup automatically.
