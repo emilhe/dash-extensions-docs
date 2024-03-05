@@ -5,7 +5,7 @@ from utils.ui import create_app_shell
 
 app = DashProxy(__name__, use_pages=True, update_title=None, suppress_callback_exceptions=True)
 # Register component blueprints.
-register_pages(app, "getting_started", order=0)
+register_pages(app, "sections", order=0)
 register_pages(app, "transforms", order=10)
 register_pages(app, "components", order=20)
 # Bind layout.
@@ -14,4 +14,4 @@ app.layout = create_app_shell(page_registry.values(), fix_page_load_anchor_issue
 server = app.server
 
 if __name__ == '__main__':
-    app.run_server(port=7879)
+    app.run_server(port=7879, debug=True)

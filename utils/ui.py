@@ -4,7 +4,7 @@ from collections import defaultdict
 from dash_iconify import DashIconify
 from dash_extensions.enrich import dcc, html, page_container, clientside_callback, Output, Input, State
 
-IGNORE_SECTIONS = ["Getting Started", "Pages"]
+IGNORE_SECTIONS = ["Sections", "Pages"]
 HOME = f"Dash Extensions"
 HOME_SHORT = "DE"
 BADGE = dash_extensions.__version__
@@ -170,22 +170,27 @@ def create_side_nave_content(nav_data):
             create_main_nav_link(
                 icon="material-symbols:rocket-launch-rounded",
                 label="Getting Started",
-                href="/getting_started/installation",
+                href="/sections/installation",
             ),
             create_main_nav_link(
                 icon="material-symbols:javascript",
                 label="Javascript",
-                href="/getting_started/javascript",
+                href="/sections/javascript",
             ),
             create_main_nav_link(
                 icon="material-symbols:magic-button",
                 label="Enrich",
-                href="/getting_started/enrich",
+                href="/sections/enrich",
+            ),
+            create_main_nav_link(
+                icon="material-symbols:library-books-outline",
+                label="Pages",
+                href="/sections/pages",
             ),
             create_main_nav_link(
                 icon="material-symbols:chip-extraction",
                 label="Migration",
-                href="/getting_started/migration",
+                href="/sections/migration",
             ),
         ],
     )

@@ -16,7 +16,7 @@ poetry add dash-extensions
 
 It should now be possible to run the following (minimal) example app,
 
-.. dash-proxy:: getting_started.minimal
+.. dash-proxy:: sections.installation.minimal
 
 ### Optional dependencies
 
