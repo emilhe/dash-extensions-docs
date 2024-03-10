@@ -28,7 +28,7 @@ apart from the `setup_page_components()` call. This function performs all the ma
 
 .. python-code:: sections.page_components.simple.pages.components
 
-Page component are assigned to a page by passing them via the `page_components` keyword argument of the `register_page` function. Hence, the first page is,
+Page component are assigned to a page by passing them via the `page_components` keyword argument of the `register_page` function. The first page is,
 
 .. python-code:: sections.page_components.simple.pages.sunburst
 
@@ -65,11 +65,23 @@ When the user navigates to the scatter page, the properties are applied automati
 
 ![Page properties](/assets/page_properties_simple.gif)
 
-### Mixing page components with the layout
+### The best of both worlds
 
+With page components offering distinct advantages and disadvantages compared to page layouts, some scenarios are best addressed through a hybrid approach. Achiving the desired page structure can seem a bit more challenging, as page component are assigned to the layout on app initialization, while page layouts are added dynamically. One way to address this heterogeneity to use [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid/) to control the main page structure, flow all elements (that needs to be positioned in this grid) to the main container using [CSS display:contents](https://caniuse.com/css-display-contents), and position the elements dynamically via page properties. 
 
+To demonstrate this approach, we'll consider a simple example, building on the code from the previous section. Specifically, we'll be adding some page content betweent the two graphs on page two. First, we modify `app.py` to use CSS grid for the main container,
 
+.. python-code:: sections.page_components.complex.app
 
+Note that the grid is initialized with 3 columns; that's because we need 3 columns to achieve the desired layout for page two. The grid layout should be chosen so as to accomodate the must granular strcture needed across all pages. To keep the layout of page one as before, we must add CSS to specify that the graph should span all 3 columns,
+
+.. python-code:: sections.page_components.complex.sunburst
+
+On page two, all three elements need a of bit of CSS to specify their respective positions,
+
+.. python-code:: sections.page_components.complex.sunburst_bar
+
+...
 
 
 
