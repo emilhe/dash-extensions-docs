@@ -54,7 +54,7 @@ To avoid id collisions between blueprints, _id prefixing_ is supported via the `
 
 The `DashProxy` object is a thin wrapper around `DashBlueprint` that turns it into a drop-in replacement for the `dash.Dash` application object,
 
-.. python-code:: getting_started.dash_proxy
+.. python-code:: sections.enrich.dash_proxy
 
 Like the (raw) `DashBlueprint` object, the `DashProxy` object supports [transforms](#a-dashtransform).
 
@@ -62,7 +62,7 @@ Like the (raw) `DashBlueprint` object, the `DashProxy` object supports [transfor
 
 To embed a blueprint in a Dash application, use the `embed` function. It transfers the callbacks from the blueprint to the Dash app, and returns the resulting layout,
 
-.. python-code:: getting_started.embedding
+.. python-code:: sections.enrich.embedding
 
 As it is possible to embed any number of blueprints, this strategy can be used to modularize the Dash application development.
 
@@ -70,7 +70,7 @@ As it is possible to embed any number of blueprints, this strategy can be used t
 
 Using the embedding approach described above, it is possible to register blueprints as separate pages in a multipage application setup, but it requires a bit of code. If you are using the [pages](https://dash.plotly.com/urls), the process is streamlined via the `register` function,
 
-.. python-code:: getting_started.pages
+.. python-code:: sections.enrich.pages
 
 Note that because the pages are registered with different values for the `prefix` argument, each page works even though the component ids are overlapping.
 
@@ -80,7 +80,7 @@ A `DashTransform` represents a _transformation_ of one `DashBlueprint` into anot
 
 As a simple example, let's consider the case of callbacks that are invoked only for their side effects. A typical example is executing a small JavaScript snippet. In Dash, a callback _must_ have an output, so the workaround for this case would be to add a dummy output,
 
-.. python-code:: getting_started.side_effect
+.. python-code:: sections.enrich.side_effect
 
 While this code _works_, it is not very elegant. Now, let's think about how the syntax _should_ be. 
 The simplest would probably be just to omit the output all together. The required steps to turn this desired syntax into valid Dash syntax would be to
@@ -91,7 +91,7 @@ The simplest would probably be just to omit the output all together. The require
 
 The steps above defines a _transformation_ of one `DashBlueprint` into another, and can thus be implemented as a `DashTransform`. Using the resulting `NoOutputTransform` (if you are interested in the details, take a look at the [source code](https://github.com/thedirtyfew/dash-extensions/blob/master/dash_extensions/enrich.py)), the previous example can be written as,
 
-.. python-code:: getting_started.side_effect_transform
+.. python-code:: sections.enrich.side_effect_transform
 
 ### CeleryManager
 

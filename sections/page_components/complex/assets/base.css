@@ -1,0 +1,24 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.all {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.left {
+    grid-column-start: 1;
+    grid-column-end: 1;
+}
+
+.center {
+    grid-column-start: 1;
+    grid-column-end: 1;
+}
+
+.center {
+    grid-column-start: 1;
+    grid-column-end: 1;
+}

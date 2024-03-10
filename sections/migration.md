@@ -1,6 +1,6 @@
 ## Migration
 
-The pages contains migration guidelines for releases that contain breaking changes.
+The page contains migration guidelines for releases that contain breaking changes.
 
 ### 1.0.0
 

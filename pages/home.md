@@ -1,9 +1,10 @@
 The `dash-extensions` package can be divided in four main pillars,
 
-* The [`enrich` module](getting_started/enrich), which contains various enriched versions of Dash components
+* The [`enrich` module](sections/enrich), which contains various enriched versions of Dash components
 * A number of custom components, e.g. the [`Websocket` component](components/websocket), which enables push notifications and real-time communication
-* The [`javascript` module](getting_started/javascript), which contains functionality to ease the interplay between Dash and JavaScript
-* The `snippets` module, which contains a collection of utility functions (documentation limited to source code comments)
+* The [`javascript` module](sections/javascript), which contains functionality to ease the interplay between Dash and JavaScript
+* The [`pages` module](sections/pages), which extends the functionality of [Dash Pages](https://dash.plotly.com/urls)
+* The `snippets/validation` modules, which contain a collection of utility functions (documentation limited to source code comments)
 
 The `enrich` module enables a number of _transforms_ that add functionality and/or syntactic sugar to Dash. Examples include
 
