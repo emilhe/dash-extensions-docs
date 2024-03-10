@@ -24,7 +24,7 @@ As a simple example, let's consider an app that has two pages. Both pages share 
 
 .. python-code:: sections.page_components.simple.app
 
-apart from the `setup_page_components()` call. This function performs all the magic, and returns the container into which page component are rendered. To enable referencing the graphs components from the pages, they are defined in a separate `components.py` file,
+apart from the `setup_page_components()` call. This function performs all the magic, and returns the container into which page component are rendered. To enable referencing the graph components from the pages, they are defined in a separate `components.py` file,
 
 .. python-code:: sections.page_components.simple.pages.components
 
@@ -36,7 +36,7 @@ and the second page is almost identical,
 
 .. python-code:: sections.page_components.simple.pages.sunburst_bar
 
-Notice that the bar graph was added as page components in this example. Since its not shared, it could also have been included as part of the page layout. Here is the application in action,
+Here is the application in action,
 
 ![Component sharing](/assets/page_components_simple.gif)
 
@@ -67,23 +67,25 @@ When the user navigates to the scatter page, the properties are applied automati
 
 ### The best of both worlds
 
-With page components offering distinct advantages and disadvantages compared to page layouts, some scenarios are best addressed through a hybrid approach. Achiving the desired page structure can seem a bit more challenging, as page component are assigned to the layout on app initialization, while page layouts are added dynamically. One way to address this heterogeneity to use [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid/) to control the main page structure, flow all elements (that needs to be positioned in this grid) to the main container using [CSS display:contents](https://caniuse.com/css-display-contents), and position the elements dynamically via page properties. 
+With page components offering distinct advantages (and disadvantages!) compared to page layouts, some scenarios are best addressed through a hybrid approach. Achiving the desired page structure can seem a bit more challenging at a glance, as page component are assigned to the layout on app initialization, while page layouts are added dynamically. 
 
-To demonstrate this approach, we'll consider a simple example, building on the code from the previous section. Specifically, we'll be adding some page content betweent the two graphs on page two. First, we modify `app.py` to use CSS grid for the main container,
+One way to address this heterogeneity is to use [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid/) to control the main page structure, flow revelant elements to the main container using [CSS display:contents](https://caniuse.com/css-display-contents), and position them (dynamically) using page properties. To illustrate the approach, let's extend the example from the previous section, adding page content _between_ the two graphs on page two. First, we modify `app.py` to use CSS grid for the main container,
 
 .. python-code:: sections.page_components.complex.app
 
-Note that the grid is initialized with 3 columns; that's because we need 3 columns to achieve the desired layout for page two. The grid layout should be chosen so as to accomodate the must granular strcture needed across all pages. To keep the layout of page one as before, we must add CSS to specify that the graph should span all 3 columns,
+Note that the grid is initialized with 3 columns; that's because we need 3 columns to achieve the desired layout for page two. It is generally recommended to choose the grid layout to accomodate the must granular strcture needed across all pages. To keep the layout of page one as before, we must add CSS to specify that the graph should span all 3 columns,
 
-.. python-code:: sections.page_components.complex.sunburst
+.. python-code:: sections.page_components.complex.pages.sunburst
 
-On page two, all three elements need a of bit of CSS to specify their respective positions,
+On page two, all elements need a of bit of CSS to specify their respective positions,
 
-.. python-code:: sections.page_components.complex.sunburst_bar
+.. python-code:: sections.page_components.complex.pages.sunburst_scatter_bar
 
-...
+Here is the application in action,
 
+![Page properties](/assets/page_components_complex.gif)
 
+While the example above is simple, the principles demonstrated can be adopted to complex apps due to the flexibility of CSS Grid. If you need additional structure beyond the main grid, you can nest additional CSS Grid(s), or use your framework of choice ([dash-bootrap-components](https://dash-bootstrap-components.opensource.faculty.ai/), [dash-mantine-components](https://www.dash-mantine-components.com/), etc.). 
 
 
 
