@@ -26,16 +26,6 @@ NAVBAR_ICONS = {
 NAVLINK_NAVBAR = "navlink_navbar"
 NAVLINK_DRAWER = "navlink_drawer"
 
-excluded_links = [
-    "/404",
-    # "/getting-started",
-    # "/styles-api",
-    # "/style-props",
-    # "/dash-iconify",
-    # "/",
-    # "/migration",
-]
-
 # region Sourced from dmc docs: https://github.com/snehilvj/dmc-docs/blob/main/lib/appshell.py
 
 # region TOC
@@ -85,8 +75,8 @@ def create_main_link(icon, label, href, idtype) -> dmc.NavLink:
 # NB: Heavily customized
 def create_content(data, idtype):
     main_links = dmc.Stack(
-        gap="sm",
-        mt=30,
+        gap=0,
+        mt=20,
         children=[
             create_main_link(
                 icon="material-symbols:rocket-launch-rounded",
@@ -138,7 +128,7 @@ def create_content(data, idtype):
                     dmc.Text(section, ml=5, size="sm"),
                 ],
                 labelPosition="left",
-                mt=40,
+                mt=20,
                 mb=10,
             )
         )
@@ -153,7 +143,6 @@ def create_content(data, idtype):
                     id={"type": idtype, "index": path},
                 )
                 for name, path in items
-                if path not in excluded_links
             ]
         )
 
@@ -161,9 +150,7 @@ def create_content(data, idtype):
         offsetScrollbars=True,
         type="scroll",
         style={"height": "100%"},
-        children=dmc.Stack(
-            gap=0, children=[main_links, *links, dmc.Space(h=90)], px=25
-        ),
+        children=dmc.Stack(gap=0, children=[main_links, *links], px=25),
     )
 
 

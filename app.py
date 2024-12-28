@@ -36,7 +36,7 @@ app = DashProxy(
 # Register component blueprints.
 register_pages(app, "sections", order=0)
 register_pages(app, "transforms", order=10)
-# register_pages(app, "components", order=20)
+register_pages(app, "components", order=20)
 # Bind layout.
 app.layout = create_app_shell(
     page_registry.values(), fix_page_load_anchor_issue(app, 500)
