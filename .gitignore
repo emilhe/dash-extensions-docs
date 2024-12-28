@@ -128,4 +128,4 @@ dmypy.json
 .pyre/
 
 __pycache__
-file_system_backend/** */
+file_system_backend/

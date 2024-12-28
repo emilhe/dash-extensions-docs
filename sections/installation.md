@@ -12,6 +12,8 @@ or if you are using [Poetry](https://python-poetry.org),
 poetry add dash-extensions
 ```
 
+<br>
+
 ### Example
 
 It should now be possible to run the following (minimal) example app,
@@ -23,7 +25,7 @@ It should now be possible to run the following (minimal) example app,
 Other recommended/related packages include
 
 * [`dash-mantine-components`](https://www.dash-mantine-components.com/) for creating user interfaces in Dash
-* [`dash-iconify`](https://www.dash-mantine-components.com/getting-started/dash-iconify) for creating icons in Dash
+* [`dash-iconify`](https://www.dash-mantine-components.com/dash-iconify) for creating icons in Dash
 * [`dash-leaflet`](https://github.com/thedirtyfew/dash-leaflet) for creating map visualizations in Dash
 * [`dash-down`](https://github.com/emilhe/dash-down) for converting markdown to Dash applications
 

@@ -4,14 +4,16 @@ import dash
 import dash_mantine_components as dmc
 import requests
 
-from dash import html, dcc
+from dash import html
 from dash_down.express import md_to_blueprint_dmc
 from dash_iconify import DashIconify
 
 from utils.ui import create_table_of_contents
 
-desc = "Dash Extensions is a collection of utility functions, syntax extensions, and Dash components that aim to " \
-       "improve the Dash development experience"
+desc = (
+    "Dash Extensions is a collection of utility functions, syntax extensions, and Dash components that aim to "
+    "improve the Dash development experience"
+)
 dash.register_page(
     __name__,
     "/",
@@ -21,11 +23,11 @@ dash.register_page(
 
 
 def create_title(title, id):
-    return dmc.Text(title, align="center", style={"fontSize": 30}, id=id)
+    return dmc.Text(title, ta="center", style={"fontSize": 30}, id=id)
 
 
 def create_head(text):
-    return dmc.Text(text, align="center", my=10, mx=0)
+    return dmc.Text(text, ta="center", my=10, mx=0)
 
 
 def create_contributors_avatars():
@@ -59,14 +61,15 @@ layout = html.Div(
                     align="center",
                     justify="center",
                     children=[
-                        dmc.Image(src="/assets/dash_logo.png", width=250),
+                        dmc.Image(src="/assets/dash_logo.png", w=250),
                         html.Div(
                             [
                                 dmc.Text(
-                                    desc, align="center",
+                                    desc,
+                                    ta="center",
                                 )
                             ],
-                            style={"max-width": 600},
+                            style={"maxWidth": 600},
                         ),
                         # dcc.Link(
                         #     [
@@ -92,15 +95,18 @@ layout = html.Div(
         dmc.Space(h=16),
         dmc.Center(
             dmc.Group(
-                spacing="xs",
+                gap="xs",
                 children=[
                     dmc.Text("Made with"),
                     DashIconify(icon="akar-icons:heart", width=19, color="red"),
                     dmc.Text("by Emil Haldrup Eriksen"),
                 ],
-            )),
-        create_table_of_contents([
-            ("#contributors", "Contributors", ""),
-        ])
+            )
+        ),
+        create_table_of_contents(
+            [
+                ("#contributors", "Contributors", ""),
+            ]
+        ),
     ]
 )

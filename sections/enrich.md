@@ -93,6 +93,8 @@ The steps above defines a _transformation_ of one `DashBlueprint` into another, 
 
 .. python-code:: sections.enrich.side_effect_transform
 
+<br>
+
 ### CeleryManager
 
 For the `CeleryManager` (used with [background callbacks](https://dash.plotly.com/background-callbacks)) to pickup background callbacks, an explicit registration of callbacks must be performed. This can be done by adding the following line,
