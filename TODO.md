@@ -1,2 +1,2 @@
-* Test dynamically generated components with prefix. Solution is in-progress
-* Add in-depth example on creating a transform
+* The font is not working properly (i.e. not aligned with DMC)
+* New Google Analytics setup is untested

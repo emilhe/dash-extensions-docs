@@ -1,24 +1,24 @@
+from collections import defaultdict
+
 import dash_extensions
 import dash_mantine_components as dmc
-from collections import defaultdict
-from dash_iconify import DashIconify
 from dash_extensions.enrich import (
-    dcc,
-    page_container,
-    clientside_callback,
-    Output,
-    Input,
-    State,
-    html,
     ALL,
+    Input,
+    Output,
+    State,
+    clientside_callback,
+    dcc,
+    html,
+    page_container,
 )
+from dash_iconify import DashIconify
 
 PRIMARY_COLOR = "blue"
 IGNORE_SECTIONS = ["Sections", "Pages"]
-HOME = "Dash Extensions"  # TODO?
 HOME_SHORT = "DE"
-BADGE = dash_extensions.__version__  # TODO?
-GITHUB_URL = "https://github.com/thedirtyfew/dash-extensions"
+BADGE = dash_extensions.__version__
+GITHUB_URL = "https://github.com/emilhe/dash-extensions"
 NAVBAR_ICONS = {
     "Components": "radix-icons:component-1",
     "Transforms": "radix-icons:transform",

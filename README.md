@@ -1,3 +1,3 @@
 # dash-extensions-docs
 
-Documentation for the dash-extensions library
+Interactive documentation for the dash-extensions library

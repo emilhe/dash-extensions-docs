@@ -8,9 +8,9 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
-dash = "2.17.0"
-dash-extensions = "1.0.18"
-dash-mantine-components = "0.14.6"
+dash = "2.18.2"
+dash-extensions = "1.0.19"
+dash-mantine-components = "0.15.1"
 dash-iconify = "^0.1.2"
 mistune = "2.0.4"
 pytest = "^7.1.1"

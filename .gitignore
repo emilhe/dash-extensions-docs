@@ -129,3 +129,5 @@ dmypy.json
 
 __pycache__
 file_system_backend/
+
+**/__pycache__/

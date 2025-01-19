@@ -1,12 +1,13 @@
 import os
-from dash_down.html_renderer import DashHtmlRenderer
+
 import dash_mantine_components as dmc
 from box import Box
 from dash_down.express import md_to_blueprint
+from dash_down.html_renderer import DashHtmlRenderer
 from dash_down.mantine_renderer import DmcRenderer
-from dash_extensions.enrich import html, DashBlueprint
-from utils.ui import create_table_of_contents
+from dash_extensions.enrich import DashBlueprint, html
 
+from utils.ui import create_table_of_contents
 
 # region Directives
 
@@ -111,6 +112,8 @@ class CustomRenderer(DashHtmlRenderer):
 
     def table(self, text):
         return dmc.Table(text, striped=True, highlightOnHover=True)
+
+    # TODO: DOES THIS WORK?
 
     # NEW
 
