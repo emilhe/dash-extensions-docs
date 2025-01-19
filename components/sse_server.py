@@ -9,17 +9,17 @@ from starlette.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 
-async def stream_content(content: str):
+async def _stream_content(content: str):
     for character in content:
         await asyncio.sleep(0.1)  # add delay to simulate streaming response
         yield sse_message(character)  # stream one character at a time
     yield sse_message()  # signal stream end
 
 
-@app.post("/steam")
-async def main(model: MyModel):
+@app.post("/stream")
+async def stream(model: MyModel):
     return StreamingResponse(
-        stream_content(model.content), media_type="text/event-stream"
+        _stream_content(model.content), media_type="text/event-stream"
     )
 
 

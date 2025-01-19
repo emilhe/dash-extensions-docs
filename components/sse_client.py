@@ -3,7 +3,7 @@ from dash_extensions.enrich import DashProxy, Input, Output, html
 from dash_extensions.streaming import sse_options
 from sse_model import MyModel
 
-API_ENDPOINT = "http://localhost:5000/steam"
+API_ENDPOINT = "http://localhost:5000/stream"
 
 # Create a small example app.
 app = DashProxy(__name__)

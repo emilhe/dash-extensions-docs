@@ -14,7 +14,7 @@ The definition of `MyModel` is simply,
 
 Including an `SSE` component in the layout of a Dash app, the streaming is initiated when the `url` (and optionally the `options` property) is set. In the example below, a button is used as trigger, and the resulting data (i.e. the `value`) is logged to `Div`, 
 
-<!-- .. python-code:: components.event_source_client -->
+.. python-code:: components.sse_client
 
 ### Notes
 
