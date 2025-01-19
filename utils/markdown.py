@@ -1,13 +1,136 @@
+import inspect
 import os
+from functools import wraps
 
+import dash_down.mantine_renderer
 import dash_mantine_components as dmc
 from box import Box
 from dash_down.express import md_to_blueprint
-from dash_down.html_renderer import DashHtmlRenderer
-from dash_down.mantine_renderer import DmcRenderer
 from dash_extensions.enrich import DashBlueprint, html
 
 from utils.ui import create_table_of_contents
+
+# region Custom renderer
+
+
+def create_class_name(text: str) -> str:
+    return "m2d-" + "-".join(text.lower().split("_"))
+
+
+def class_name(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        ret = func(*args, **kwargs)
+        name = func.__name__ if inspect.isfunction(func) else func.__self__.block_name
+        if ret is not None:
+            ret.className = create_class_name(name)
+
+        return ret
+
+    return wrapper
+
+
+# TODO: Backport to dash-down?
+
+# Maybe just use https://github.com/snehilvj/markdown2dash/blob/main/markdown2dash/src/renderer.py
+
+
+class DmcRenderer(dash_down.mantine_renderer.DmcRenderer):
+    """
+    Render markdown into Dash Mantine components.
+    """
+
+    # Basic
+
+    @class_name
+    def link(self, link, children=None, title=None):
+        return dmc.Anchor(children, href=link)
+
+    @class_name
+    def heading(self, children, level):
+        return dmc.Title(super().add_header_anchor(children), order=level)
+
+    @class_name
+    def paragraph(self, text):
+        return dmc.Text(text)
+
+    @class_name
+    def image(self, src, alt="", title=None):
+        # TODO: Review render (!)
+        return dmc.Stack([dmc.Image(src=src, alt=alt), dmc.Text(title)])
+
+    @class_name
+    def thematic_break(self):
+        return dmc.Divider()
+
+    # Block
+
+    @class_name
+    def block_code(self, children, info=None):
+        lang = None
+        if info is not None:
+            info = info.strip()
+        if info:
+            lang = info.split(None, 1)[0]
+        return dmc.CodeHighlight(children, language=lang)
+
+    @class_name
+    def block_quote(self, text):
+        return dmc.Blockquote(text)
+
+    # List
+
+    @class_name
+    def list(self, children, ordered, level, start=None):
+        return dmc.List(children, type="ordered" if ordered else "unordered")
+
+    @class_name
+    def list_item(self, text, level):
+        return dmc.ListItem(text)
+
+    # Formatting
+
+    @class_name
+    def codespan(self, text):
+        return dmc.Code(text)
+
+    @class_name
+    def strong(self, text):
+        return dmc.Text(text, fw=700, display="inline")
+
+    @class_name
+    def emphasis(self, text):
+        return dmc.Text(text, fs="italic", display="inline")
+
+    @class_name
+    def strikethrough(self, text):
+        return dmc.Text(text, td="line-through", display="inline")
+
+    # Table
+
+    @class_name
+    def table(self, text):
+        return dmc.Table(text, striped=True, highlightOnHover=True)
+
+    @class_name
+    def table_head(self, text):
+        return dmc.TableThead(self.table_row(text))
+
+    @class_name
+    def table_body(self, text):
+        return dmc.TableTbody(text)
+
+    @class_name
+    def table_row(self, text: str):
+        return dmc.TableTr(text)
+
+    @class_name
+    def table_cell(self, text: str, align=None, head=False):
+        return dmc.TableTh(text) if head else dmc.TableTd(text)
+
+
+# endregion
+
 
 # region Directives
 
@@ -60,7 +183,7 @@ def str2anchor(children: str):
 
 def md_to_blueprint_with_toc(pth: str, **md_options) -> DashBlueprint:
     with TocTracker() as at:
-        blueprint = md_to_blueprint(CustomRenderer, pth, **md_options)
+        blueprint = md_to_blueprint(DmcRenderer, pth, **md_options)
         blueprint.layout = html.Div(
             [
                 blueprint.layout,
@@ -73,58 +196,6 @@ def md_to_blueprint_with_toc(pth: str, **md_options) -> DashBlueprint:
             ]
         )
     return blueprint
-
-
-class CustomRenderer(DashHtmlRenderer):
-    """
-    Render markdown into Dash Mantine components.
-    """
-
-    def link(self, link, children=None, title=None):
-        return dmc.Anchor(children, href=link)
-
-    def image(self, src, alt="", title=None):
-        # TODO: Review render (!)
-        return dmc.Stack([dmc.Image(src=src, alt=alt), dmc.Text(title)])
-
-    def heading(self, children, level):
-        return dmc.Title(super().add_header_anchor(children), order=level)
-
-    def thematic_break(self):
-        return dmc.Divider()
-
-    def block_code(self, children, info=None):
-        lang = None
-        if info is not None:
-            info = info.strip()
-        if info:
-            lang = info.split(None, 1)[0]
-        return dmc.CodeHighlight(children, language=lang)
-
-    def block_quote(self, text):
-        return dmc.Blockquote(text)
-
-    def list(self, children, ordered, level, start=None):
-        return dmc.List(children, type="ordered" if ordered else "unordered")
-
-    def list_item(self, text, level):
-        return dmc.ListItem(text)
-
-    def table(self, text):
-        return dmc.Table(text, striped=True, highlightOnHover=True)
-
-    # TODO: DOES THIS WORK?
-
-    # NEW
-
-    # def emphasis(self, text):
-    #     return html.Em(text)
-
-    # def strong(self, text):
-    #     return html.Strong(text)
-
-    def paragraph(self, text):
-        return dmc.Text(text, className="m2d-paragraph")
 
 
 # endregion

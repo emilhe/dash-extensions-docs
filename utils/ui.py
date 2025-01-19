@@ -343,7 +343,7 @@ def create_app_shell(data, children):
         forceColorScheme="light",
         theme={
             "primaryColor": PRIMARY_COLOR,
-            "fontFamily": "'Inter', sans-serif",
+            # "fontFamily": "'Inter', sans-serif",
             "components": {
                 "Button": {"defaultProps": {"fw": 400}},
                 "Alert": {"styles": {"title": {"fontWeight": 500}}},

@@ -12,8 +12,6 @@ or if you are using [Poetry](https://python-poetry.org),
 poetry add dash-extensions
 ```
 
-<br>
-
 ### Example
 
 It should now be possible to run the following (minimal) example app,
