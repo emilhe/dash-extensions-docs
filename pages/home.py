@@ -3,7 +3,6 @@ from os import environ
 import dash
 import dash_mantine_components as dmc
 import requests
-
 from dash import html
 from dash_down.express import md_to_blueprint_dmc
 from dash_iconify import DashIconify
@@ -38,8 +37,6 @@ def create_contributors_avatars():
     contributors = resp.json()
     children = []
     for user in contributors:
-        print(type(user))
-        print(user)
         avatar = dmc.Tooltip(
             dmc.Anchor(dmc.Avatar(src=user["avatar_url"]), href=user["html_url"]),
             label=user["login"],
@@ -47,7 +44,7 @@ def create_contributors_avatars():
         )
         children.append(avatar)
 
-    return dmc.Group(children, position="center", id="contributors")
+    return dmc.Group(children, justify="center", id="contributors")
 
 
 content = md_to_blueprint_dmc("pages/home.md").layout
