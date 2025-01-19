@@ -3,22 +3,31 @@ from dash_extensions.enrich import DashProxy, Input, Output, html
 from dash_extensions.streaming import sse_options
 from sse_model import MyModel
 
-API_ENDPOINT = "http://localhost:5000/sse"
+API_ENDPOINT = "http://localhost:5000/steam"
 
 # Create a small example app.
 app = DashProxy(__name__)
 app.layout = html.Div(
     [
-        html.Button("Click me", id="btn"),
-        SSE(id="sse"),
-        html.Div(id="sse-value"),
+        html.Button("Start streaming", id="btn"),
+        SSE(id="sse", concat=True, animate_chunk=5, animate_delay=10),
+        html.Div(id="response"),
     ]
 )
-# Update the output with the value of the SSE stream.
-app.clientside_callback("(x) => console.log(x)", Output("sse-value", "children"), Input("sse", "value"))
+# Render (concatenated, animated) text from the SSE component.
+app.clientside_callback(
+    "function(x){return x};",
+    Output("response", "children"),
+    Input("sse", "animation"),
+)
 
 
-@app.callback(Output("sse", "url"), Output("sse", "options"), Input("btn", "n_clicks"), prevent_initial_call=True)
+@app.callback(
+    Output("sse", "url"),
+    Output("sse", "options"),
+    Input("btn", "n_clicks"),
+    prevent_initial_call=True,
+)
 def start_streaming(_):
     return API_ENDPOINT, sse_options(MyModel(content="Hello, world!"))
 

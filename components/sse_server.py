@@ -1,4 +1,4 @@
-import time
+import asyncio
 
 from dash_extensions.streaming import sse_message
 from fastapi import FastAPI
@@ -11,18 +11,22 @@ app = FastAPI()
 
 async def stream_content(content: str):
     for character in content:
-        time.sleep(1)  # add delay to simulate streaming response
+        await asyncio.sleep(0.1)  # add delay to simulate streaming response
         yield sse_message(character)  # stream one character at a time
     yield sse_message()  # signal stream end
 
 
-@app.post("/sse")
+@app.post("/steam")
 async def main(model: MyModel):
-    return StreamingResponse(stream_content(model.content), media_type="text/event-stream")
+    return StreamingResponse(
+        stream_content(model.content), media_type="text/event-stream"
+    )
 
 
 # Add CORS middleware to allow cross-origin requests (necessary for streaming).
-app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
+app.add_middleware(
+    CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"]
+)
 
 if __name__ == "__main__":
     import uvicorn
