@@ -78,7 +78,7 @@ Note that because the pages are registered with different values for the `prefix
 
 A `DashTransform` represents a _transformation_ of one `DashBlueprint` into another. Since a blueprint holds both callback and layout information, transforms can make arbitrary modifications of both. Transforms can be passed via the `transforms` keyword of `DashBlueprint` and/or `DashProxy`. The key purpose of transforms is to make it possible to encapsulate blocks of application logic, and abstract it away. 
 
-As a simple example, let's consider the case of callbacks that are invoked only for their side effects. A typical example is executing a small JavaScript snippet. In Dash, a callback _must_ have an output, so the workaround for this case would be to add a dummy output,
+As a simple example, let's consider the case of callbacks that are invoked only for their side effects. A typical example is executing a small JavaScript snippet. In Dash, a callback _must_ have an output [NB: As per Dash 2.17.0 this is not longer true, but example point(s) remain valid, so I have kept it here for now], so the workaround for this case would be to add a dummy output,
 
 .. python-code:: sections.enrich.side_effect
 

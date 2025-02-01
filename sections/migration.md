@@ -2,6 +2,12 @@
 
 The page contains migration guidelines for releases that contain breaking changes.
 
+### 1.1.0
+
+The `NoOuputTransform` was removed. As per Dash 2.17.0, callbacks with outputs are supported out of the box. Hence, no migration is necessary (apart from removing the `NoOuputTransform` itself).
+
+The `dataiku` module was removed. With Dataiku being a proprietary platform that i no longer have access to, I am not able to provide guidelines on possible migration strategies.
+
 ### 1.0.0
 
 The `OperatorTransform` was removed. The recommended migration approach is to switch to [partial property updates](https://dash.plotly.com/partial-properties) introduced in Dash 2.9, which offer similar functionality.

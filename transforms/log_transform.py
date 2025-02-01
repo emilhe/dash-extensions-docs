@@ -1,8 +1,16 @@
 from dash.exceptions import PreventUpdate
-from dash_extensions.enrich import Output, Input, html, DashProxy, LogTransform, DashLogger
+from dash_extensions.enrich import (
+    DashLogger,
+    DashProxy,
+    Input,
+    LogTransform,
+    Output,
+    html,
+)
 
 app = DashProxy(transforms=[LogTransform()])
 app.layout = html.Div([html.Button("Run", id="btn"), html.Div(id="txt")])
+
 
 @app.callback(Output("txt", "children"), Input("btn", "n_clicks"), log=True)
 def do_stuff(n_clicks, dash_logger: DashLogger):
@@ -13,5 +21,6 @@ def do_stuff(n_clicks, dash_logger: DashLogger):
     dash_logger.error("Some error occurred")
     return f"Run number {n_clicks} completed"
 
-if __name__ == '__main__':
-    app.run_server(debug=True)
+
+if __name__ == "__main__":
+    app.run(debug=True)

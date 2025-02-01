@@ -33,4 +33,4 @@ def start_streaming(_):
 
 
 if __name__ == "__main__":
-    app.run_server(port=7777)
+    app.run(port=7777)

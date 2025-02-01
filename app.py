@@ -1,7 +1,6 @@
 import os
 
 import dash_mantine_components as dmc
-from dash import _dash_renderer
 from dash_extensions.enrich import DashProxy, page_registry
 from dash_extensions.snippets import fix_page_load_anchor_issue
 
@@ -12,9 +11,6 @@ stylesheets = [
     dmc.styles.CODE_HIGHLIGHT,
     dmc.styles.NOTIFICATIONS,
 ]
-
-
-_dash_renderer._set_react_version("18.2.0")
 
 # Add Google Analytics. # TODO: Does this work? TEST IT (!)
 gtag = os.getenv("gtag", "")
@@ -42,4 +38,4 @@ app.layout = create_app_shell(
 server = app.server
 
 if __name__ == "__main__":
-    app.run_server(port=7879, debug=True)
+    app.run(port=7879, debug=True)

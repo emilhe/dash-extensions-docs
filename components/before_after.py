@@ -1,5 +1,5 @@
-from dash_extensions.enrich import DashProxy, html
 from dash_extensions import BeforeAfter
+from dash_extensions.enrich import DashProxy, html
 
 app = DashProxy()
 app.layout = html.Div(
@@ -14,4 +14,4 @@ app.layout = html.Div(
 )
 
 if __name__ == "__main__":
-    app.run_server()
+    app.run()
