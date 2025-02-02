@@ -17,6 +17,7 @@ from dash_iconify import DashIconify
 PRIMARY_COLOR = "blue"
 IGNORE_SECTIONS = ["Sections", "Pages"]
 HOME_SHORT = "DE"
+HOME_LONG = "Dash Extensions"
 BADGE = dash_extensions.__version__
 GITHUB_URL = "https://github.com/emilhe/dash-extensions"
 NAVBAR_ICONS = {
@@ -94,6 +95,12 @@ def create_content(data, idtype):
                 icon="material-symbols:magic-button",
                 label="Enrich",
                 href="/sections/enrich",
+                idtype=idtype,
+            ),
+            create_main_link(
+                icon="material-symbols:wrap-text",
+                label="Logging",
+                href="/sections/logging",
                 idtype=idtype,
             ),
             create_main_link(
@@ -261,7 +268,20 @@ def create_header(data):
                             dmc.Group(
                                 [
                                     dmc.Anchor(
-                                        HOME_SHORT, size="xl", href="/", underline=False
+                                        HOME_LONG,
+                                        size="xl",
+                                        href="/",
+                                        underline=False,
+                                        pb=3,
+                                        visibleFrom="lg",
+                                    ),
+                                    dmc.Anchor(
+                                        HOME_SHORT,
+                                        size="xl",
+                                        href="/",
+                                        underline=False,
+                                        pb=3,
+                                        hiddenFrom="lg",
                                     ),
                                     create_version_menu(),
                                 ]

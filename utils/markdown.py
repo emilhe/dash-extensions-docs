@@ -1,154 +1,28 @@
-import inspect
 import os
-from functools import wraps
 
-import dash_down.mantine_renderer
 import dash_mantine_components as dmc
-from box import Box
-from dash_down.express import md_to_blueprint
-from dash_extensions.enrich import DashBlueprint, html
+from dash_down.express import DmcRenderer, md_to_blueprint
+from dash_extensions.enrich import DashBlueprint, PrefixIdTransform, html
 
 from utils.ui import create_table_of_contents
-
-# region Custom renderer
-
-
-def create_class_name(text: str) -> str:
-    return "m2d-" + "-".join(text.lower().split("_"))
-
-
-def class_name(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        ret = func(*args, **kwargs)
-        name = func.__name__ if inspect.isfunction(func) else func.__self__.block_name
-        if ret is not None:
-            ret.className = create_class_name(name)
-
-        return ret
-
-    return wrapper
-
-
-# TODO: Backport to dash-down?
-
-# Maybe just use https://github.com/snehilvj/markdown2dash/blob/main/markdown2dash/src/renderer.py
-
-
-class DmcRenderer(dash_down.mantine_renderer.DmcRenderer):
-    """
-    Render markdown into Dash Mantine components.
-    """
-
-    # Basic
-
-    @class_name
-    def link(self, link, children=None, title=None):
-        return dmc.Anchor(children, href=link)
-
-    @class_name
-    def heading(self, children, level):
-        return dmc.Title(super().add_header_anchor(children), order=level)
-
-    @class_name
-    def paragraph(self, text):
-        return dmc.Text(text)
-
-    @class_name
-    def image(self, src, alt="", title=None):
-        # TODO: Review render (!)
-        return dmc.Stack([dmc.Image(src=src, alt=alt), dmc.Text(title)])
-
-    @class_name
-    def thematic_break(self):
-        return dmc.Divider()
-
-    # Block
-
-    @class_name
-    def block_code(self, children, info=None):
-        lang = None
-        if info is not None:
-            info = info.strip()
-        if info:
-            lang = info.split(None, 1)[0]
-        return dmc.CodeHighlight(children, language=lang)
-
-    @class_name
-    def block_quote(self, text):
-        return dmc.Blockquote(text)
-
-    # List
-
-    @class_name
-    def list(self, children, ordered, level, start=None):
-        return dmc.List(children, type="ordered" if ordered else "unordered")
-
-    @class_name
-    def list_item(self, text, level):
-        return dmc.ListItem(text)
-
-    # Formatting
-
-    @class_name
-    def codespan(self, text):
-        return dmc.Code(text)
-
-    @class_name
-    def strong(self, text):
-        return dmc.Text(text, fw=700, display="inline")
-
-    @class_name
-    def emphasis(self, text):
-        return dmc.Text(text, fs="italic", display="inline")
-
-    @class_name
-    def strikethrough(self, text):
-        return dmc.Text(text, td="line-through", display="inline")
-
-    # Table
-
-    @class_name
-    def table(self, text):
-        return dmc.Table(text, striped=True, highlightOnHover=True)
-
-    @class_name
-    def table_head(self, text):
-        return dmc.TableThead(self.table_row(text))
-
-    @class_name
-    def table_body(self, text):
-        return dmc.TableTbody(text)
-
-    @class_name
-    def table_row(self, text: str):
-        return dmc.TableTr(text)
-
-    @class_name
-    def table_cell(self, text: str, align=None, head=False):
-        return dmc.TableTh(text) if head else dmc.TableTd(text)
-
-
-# endregion
-
 
 # region Directives
 
 
 def python_code(
-    value: str, text: str, options: Box[str, str], blueprint: DashBlueprint
+    value: str, text: str, options: dict[str, str], blueprint: DashBlueprint
 ):
     with open(f"{value.replace('.', '/')}.py", "r") as f:
         source = f.readlines()
-    return dmc.CodeHighlight("".join(source), language="python")
+    return dmc.CodeHighlight("".join(source), language="python", mb=16)
 
 
 # endregion
 
-# region Automatec toc genetation
+# region Automatic toc genetation
 
 
-def _record_link(self, children, level, links=None, original=None):
+def _record_link(self, children, level, links, original):
     links.append([children, level])
     return original(self, children=children, level=level)
 
@@ -165,11 +39,11 @@ class TocTracker:
             lambda s, c, l, links=self.links, original=self._original: _record_link(
                 s, c, l, links, original
             )
-        )
+        )  # type: ignore
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        DmcRenderer.heading = self._original
+        DmcRenderer.heading = self._original  # type: ignore
 
 
 def str2anchor(children: str):
@@ -223,20 +97,13 @@ def dash_proxy_shell(source, layout, render=True):
     return dmc.Grid(
         code + (app_layout if render else []),
         columns=1,
-        style=dict(marginBottom="16px"),
-    )
-
-
-def blueprint_shell(children):
-    return html.Div(
-        children, style=dict(marginBottom="16px"), className="markdown-body"
+        mb=16,
     )
 
 
 def register_pages(app, folder, order=None, order_map=None):
     md_options = dict(
         directives=[python_code],
-        shell=blueprint_shell,
         dash_proxy_shell=dash_proxy_shell,
     )
     for fn in [fn for fn in os.listdir(folder) if fn.endswith(".md")]:
@@ -248,8 +115,23 @@ def register_pages(app, folder, order=None, order_map=None):
         blueprint.register(
             app,
             f"{folder}.{name}",
-            prefix=name,
+            prefix=PrefixIdTransform(name, escape=prefix_escape),
             name=camel(name),
             order=order,
             path=f"/{folder}/{name}",
         )
+
+
+def prefix_escape(component_id: str):
+    if isinstance(component_id, str):
+        if component_id.startswith("a-"):  # intended usage is for anchors
+            return True
+        if component_id.startswith("anchor-"):  # intended usage is for anchors
+            return True
+        if component_id.startswith("div_log_handler"):  # for logging utilities
+            return True
+        if component_id.startswith(
+            "notifications_log_handler"
+        ):  # for logging utilities
+            return True
+    return False

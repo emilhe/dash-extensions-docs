@@ -18,7 +18,6 @@ app = DashProxy(transforms=[
     ServersideOutputTransform(),  # enable use of ServersideOutput objects
     NoOutputTransform(),  # enable callbacks without output
     BlockingCallbackTransform(),  # makes it possible to skip callback invocations while a callback is running 
-    LogTransform()  # makes it possible to write log messages to a Dash component
 ])
 ```
 
