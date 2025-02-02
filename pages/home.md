@@ -10,5 +10,6 @@ The `enrich` module enables a number of _transforms_ that add functionality and/
 
 * Making it possible to avoid invoking a callback _if it is already running_ via the [`BlockingCallbackTransform`](transforms/blocking_callback_transform)
 * Improving app performance via the [`ServersideOutputTransform`](transforms/serverside_output_transform)
+* Automated serialization/deserialization of [Pydantic](https://docs.pydantic.dev/latest/) models via the [`BaseModelTransform`](transforms/base_model_transform)
 
 When possible, the usage of transforms and custom Dash components is illustrated via one (or more) code examples with the actual code running below. Hence, it should be possible to copy-paste the code and run it right away.
