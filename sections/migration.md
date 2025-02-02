@@ -4,6 +4,8 @@ The page contains migration guidelines for releases that contain breaking change
 
 ### 1.1.0
 
+The `LogTransform` was removed. Please use the [logging` module](/sections/logging) instead.
+
 The `NoOuputTransform` was removed. As per Dash 2.17.0, callbacks with outputs are supported out of the box. Hence, no migration is necessary (apart from removing the `NoOuputTransform` itself).
 
 The `dataiku` module was removed. With Dataiku being a proprietary platform that i no longer have access to, I am not able to provide guidelines on possible migration strategies.
