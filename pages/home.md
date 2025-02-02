@@ -1,5 +1,4 @@
-The `dash-extensions` package can be divided in five main pillars,
-
+The `dash-extensions` package holds mixture of Dash components and Python modules,
 * The [`enrich` module](sections/enrich), which contains various enriched versions of Dash components
 * A number of custom components, e.g. the [`Websocket` component](components/websocket), which enables push notifications and real-time communication
 * The [`javascript` module](sections/javascript), which contains functionality to ease the interplay between Dash and JavaScript
