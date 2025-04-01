@@ -6,9 +6,8 @@ app.layout = Lottie(
     options=dict(
         loop=True,
         autoplay=True,
-        rendererSettings=dict(preserveAspectRatio="xMidYMid slice"),
+        style=dict(width="50%", margin="auto"),
     ),
-    width="50%",
     url="https://assets8.lottiefiles.com/packages/lf20_bkwin39r.json",
 )
 

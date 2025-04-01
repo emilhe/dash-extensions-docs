@@ -8,10 +8,10 @@ layout = dmc.Stack(
     align="center",
     children=[
         Lottie(
-            options=dict(loop=True, autoplay=True),
-            isClickToPauseDisabled=True,
+            options=dict(
+                loop=True, autoplay=True, style=dict(width="40%", margin="auto")
+            ),
             url="https://assets5.lottiefiles.com/packages/lf20_kcsr6fcp.json",
-            width="40%",
         ),
         dmc.Text(
             [
