@@ -1,2 +1,4 @@
-* New Google Analytics setup is untested
-* Re-consider markdown setup before moving to dash-leaflet docs. Should I just use markdown2dash?
+- New Google Analytics setup is untested
+- Re-consider markdown setup before moving to dash-leaflet docs. Should I just use markdown2dash?
+- Add docs on the events module
+- Add new example setup with streaming _inside_ the Dash app(!), either with threads or gevent
