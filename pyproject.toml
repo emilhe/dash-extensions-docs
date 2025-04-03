@@ -1,31 +1,31 @@
-[tool.poetry]
+[project]
 name = "dash-extensions-docs"
 version = "0.0.1"
-description = ""
-authors = ["emher <emil.h.eriksen@gmail.com>"]
+description = "Interactive documentation for dash-extensions."
+authors = [
+    { name = "emher", email = "emil.h.eriksen@gmail.com" },
+]
 license = "MIT"
-package-mode = false
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dash>=3.0.2",
+    "dash-extensions>=2.0.0",
+    "dash-mantine-components>=1.1.0",
+    "dash-iconify>=0.1.2",
+    "dash-down>=0.2.0",
+    "XlsxWriter>=3.0.3",
+    "kaleido>=1.0.0rc11",
+    "gunicorn>=20.1.0",
+    "requests>=2.28.1",
+    "fastapi>=0.111.0",
+    "pandas"
+]
 
-[tool.poetry.dependencies]
-python = ">=3.9,<4.0"
-dash = "3.0.0rc1"
-dash-extensions = "1.1.0rc6"
-dash-mantine-components = "0.15.1"
-dash-iconify = "^0.1.2"
-mistune = "2.0.4"
-pytest = "^7.1.1"
-coverage = "^6.3.2"
-dash-down = "0.2.0rc2"
-uvicorn = "^0.18.2"
-pandas = ">=1.1.5"
-XlsxWriter = "^3.0.3"
-kaleido = "0.2.1"
-quart = "^0.17.0"
-gunicorn = "^20.1.0"
-toml = "^0.10.2"
-requests = "^2.28.1"
-fastapi = "^0.111.0"
+[project.urls]
+homepage = "https://github.com/emilhe/dash-extensions-docs"
+repository = "https://github.com/emilhe/dash-extensions-docs"
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.ruff]
+line-length = 120
+target-version = "py313"

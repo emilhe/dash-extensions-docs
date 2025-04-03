@@ -5,7 +5,7 @@ app.layout = html.Div([html.Button("Click me", id="btn"), html.Div(id="log")])
 
 
 @app.callback(Output("log", "children"), Input("btn", "id"))
-def func(btn_id):  # argument is omitted from the function
+def func(btn_id):
     return f"The button id is {btn_id}"
 
 

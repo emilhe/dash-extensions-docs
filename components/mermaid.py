@@ -9,7 +9,9 @@ A-->B;
 A-->C;
 B-->D;
 C-->D;
-"""
+""",
+    # It is recommended to a an id, otherwise you may see 'querySelector' errors
+    id="mermaid-chart",
 )
 
 if __name__ == "__main__":

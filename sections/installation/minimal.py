@@ -3,8 +3,11 @@ from dash_extensions.enrich import DashProxy
 
 app = DashProxy()
 app.layout = Lottie(
-    options=dict(loop=True, autoplay=True),
-    width="25%",
+    options=dict(
+        loop=True,
+        autoplay=True,
+        style=dict(width="25%", margin="auto"),
+    ),
     url="https://assets6.lottiefiles.com/packages/lf20_rwwvwgka.json",
 )
 
