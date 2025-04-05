@@ -24,7 +24,7 @@ dash==3.0.2
     #   dash-mantine-components
 dash-down==0.2.0
     # via dash-extensions-docs (pyproject.toml)
-dash-extensions==2.0.0
+dash-extensions==2.0.1
     # via
     #   dash-extensions-docs (pyproject.toml)
     #   dash-down

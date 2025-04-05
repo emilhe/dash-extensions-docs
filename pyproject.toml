@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "dash>=3.0.2",
-    "dash-extensions>=2.0.0",
+    "dash-extensions==2.0.1",
     "dash-mantine-components>=1.1.0",
     "dash-iconify>=0.1.2",
     "dash-down>=0.2.0",

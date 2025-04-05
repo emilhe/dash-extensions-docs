@@ -110,6 +110,12 @@ def create_content(data, idtype):
                 idtype=idtype,
             ),
             create_main_link(
+                icon="material-symbols:arrows-output",
+                label="Events",
+                href="/sections/events",
+                idtype=idtype,
+            ),
+            create_main_link(
                 icon="material-symbols:chip-extraction",
                 label="Migration",
                 href="/sections/migration",
@@ -198,9 +204,7 @@ def create_navbar_drawer(data):
 
 def create_link(icon, href):
     return dmc.Anchor(
-        dmc.ActionIcon(
-            DashIconify(icon=icon, width=25), variant="transparent", size="lg"
-        ),
+        dmc.ActionIcon(DashIconify(icon=icon, width=25), variant="transparent", size="lg"),
         href=href,
         target="_blank",
         visibleFrom="xs",
