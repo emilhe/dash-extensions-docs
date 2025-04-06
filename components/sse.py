@@ -1,9 +1,9 @@
+import time
+
 from dash_extensions import SSE
 from dash_extensions.enrich import DashProxy, Input, Output, html
-from dash_extensions.streaming import sse_options
-from sse_model import MyModel
-
-API_ENDPOINT = "http://localhost:5000/stream"
+from dash_extensions.streaming import sse_message, sse_options
+from flask import Response, request
 
 # Create a small example app.
 app = DashProxy(__name__)
@@ -29,8 +29,20 @@ app.clientside_callback(
     prevent_initial_call=True,
 )
 def start_streaming(_):
-    return API_ENDPOINT, sse_options(MyModel(content="Hello, world!"))
+    return "/stream", sse_options("Hello, world!")
 
 
-if __name__ == "__main__":
-    app.run(port=7777)
+@app.server.post("/stream")
+def stream():
+    message = request.data.decode("utf-8")
+
+    def eventStream():
+        for char in message:
+            time.sleep(0.1)
+            yield sse_message(char)
+        yield sse_message()
+
+    return Response(eventStream(), mimetype="text/event-stream")
+
+
+server = app.server  # make server available for gunicorn
