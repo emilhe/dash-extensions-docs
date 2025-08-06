@@ -2,7 +2,7 @@
 
 In Dash, component properties must be JSON serializable. However, many React components take JavaScript functions (or objects) as inputs, which can make it tedious to write Dash wrappers. To ease the process, `dash-extensions` implements a simple bridge for passing function handles (and other variables) as component properties. The `javascript` module is the Python side of the bridge, while the `dash-extensions-js` package [on npm](https://www.npmjs.com/package/dash-extensions-js) forms the JavaScript side. 
 
-In the examples below, we will consider the `GeoJSON` component in `dash-leaflet==0.1.10`. The complete example apps are available in the [dash-leaflet documentation](http://dash-leaflet.herokuapp.com/#tutorials).
+In the examples below, we will consider the `GeoJSON` component in `dash-leaflet==0.1.10`. The complete example apps are available in the [dash-leaflet documentation](https://www.dash-leaflet.com/docs/geojson_tutorial).
 
 ### JavaScript variables
 
